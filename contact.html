@@ -13,7 +13,7 @@
 
 <body class="bg-dark">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-warning">
+    <nav class="navbar navbar-expand-lg bg-warning mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="profil.html">Projet Cinéma</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
@@ -42,6 +42,49 @@
             </div>
         </div>
     </nav>
+
+    <!-- Présentation -->
+    <header class="container-fluid d-flex flex-md-row flex-column align-items-center mb-4">
+        <p class="text-white text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, dicta minus. Consectetur sapiente unde quos
+            voluptates repellendus. Dolorem quibusdam nostrum ducimus consequuntur officia ea voluptate error, adipisci
+            magnam ipsum totam mollitia velit reiciendis tempora nobis reprehenderit hic facere ex at.</p>
+        <img class="border border-3 border-warning rounded-2 col-md-5 col-10" src="Images/vhs.jpg" alt="vhs">
+    </header>
+
+    <!-- Formulaire contact -->
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center text-white mb-4">
+        <div class="text-center mb-4">
+            <h1>Contactez-nous</h1>
+            <p class="m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum facere autem
+                provident, quibusdam ullam deserunt quos obcaecati incidunt praesentium sunt totam sed recusandae omnis
+                dicta harum cum sint nemo quam odio consectetur quidem tempore. Eum sint neque nemo alias dolor!</p>
+        </div>
+        <form class="col-xxl-4 col-md-7 col-10 border border-3 border-warning rounded-4 p-3">
+            <div class="d-flex flex-lg-row flex-column justify-content-lg-between">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="inputName">
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputSujet" class="form-label">Sujet</label>
+                <input type="password" class="form-control" id="inputSujet">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="inputMessage">Message</label>
+                <textarea class="form-control" id="inputMessage" rows="6"></textarea>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-warning">Envoyer</button>
+            </div>
+        </form>
+    </div>
 
     <!-- Footer -->
     <footer class="container-fluid d-flex justify-content-between bg-warning">
