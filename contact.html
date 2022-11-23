@@ -1,12 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <title>Projet Cinéma</title>
 </head>
-<body>
-    
+
+<body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-warning">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="profil.html">Projet Cinéma</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a class="nav-link" href="profil.html">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="films.html">Films</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="series.html">Séries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="animes.html">Animes</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="container-fluid d-flex justify-content-between bg-warning">
+        <div class="col-2 d-flex flex-column justify-content-around align-items-center">
+            <h1 class="m-0 mt-3">Site</h1>
+            <i class="bi bi-camera-reels mb-3" style="font-size: 6rem"></i>
+        </div>
+
+        <div class="d-flex flex-sm-row flex-column justify-content-center align-items-center">
+            <a class="text-dark text-decoration-none" href="https://twitter.com/">
+                <i class="bi bi-twitter m-3" style="font-size: 2rem"></i></a>
+
+            <a class="text-dark text-decoration-none" href="https://www.facebook.com/">
+                <i class="bi bi-facebook m-3" style="font-size: 2rem"></i></a>
+
+            <a class="text-dark text-decoration-none" href="https://www.linkedin.com/">
+                <i class="bi bi-linkedin m-3" style="font-size: 2rem"></i></a>
+
+            <a class="text-dark text-decoration-none" href="https://www.youtube.com/">
+                <i class="bi bi-youtube m-3" style="font-size: 2rem"></i></a>
+        </div>
+
+        <div class="col-2 d-flex flex-column justify-content-center text-center">
+            <a class="text-decoration-none text-dark mb-3" href="contact.html">Contact</a>
+            <a class="text-decoration-none text-dark" href="#">Informations Légales</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
