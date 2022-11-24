@@ -44,11 +44,13 @@
     </nav>
 
     <!-- Présentation -->
-    <header class="container-fluid d-flex flex-md-row flex-column align-items-center mb-4">
-        <p class="text-white text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, dicta minus. Consectetur sapiente unde quos
-            voluptates repellendus. Dolorem quibusdam nostrum ducimus consequuntur officia ea voluptate error, adipisci
-            magnam ipsum totam mollitia velit reiciendis tempora nobis reprehenderit hic facere ex at.</p>
-        <img class="border border-3 border-warning rounded-2 col-md-5 col-10" src="Images/vhs.jpg" alt="vhs">
+    <header class="container-fluid d-flex flex-column flex-md-row align-items-center mb-4">
+            <p class="text-white text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, dicta
+                minus. Consectetur sapiente unde quos
+                voluptates repellendus. Dolorem quibusdam nostrum ducimus consequuntur officia ea voluptate error,
+                adipisci
+                magnam ipsum totam mollitia velit reiciendis tempora nobis reprehenderit hic facere ex at.</p>
+            <img class="border border-3 border-warning rounded-2 col-md-5 col-10" src="Images/vhs.jpg" alt="vhs">
     </header>
 
     <!-- Formulaire contact -->
@@ -60,13 +62,13 @@
                 dicta harum cum sint nemo quam odio consectetur quidem tempore. Eum sint neque nemo alias dolor!</p>
         </div>
         <form class="col-xxl-4 col-md-7 col-10 border border-3 border-warning rounded-4 p-3">
-            <div class="d-flex flex-lg-row flex-column justify-content-lg-between">
-                <div class="mb-3">
+            <div class="row">
+                <div class="col-md mb-3">
                     <label for="inputName" class="form-label">Nom</label>
                     <input type="text" class="form-control" id="inputName">
                 </div>
 
-                <div class="mb-3">
+                <div class="col-md mb-3">
                     <label for="inputEmail" class="form-label">Email</label>
                     <input type="email" class="form-control" id="inputEmail">
                 </div>
@@ -80,20 +82,20 @@
                 <label class="form-label" for="inputMessage">Message</label>
                 <textarea class="form-control" id="inputMessage" rows="6"></textarea>
             </div>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-warning">Envoyer</button>
+            <div class="row justify-content-center">
+                <button type="submit" class="col-5 col-sm-3 btn btn-warning">Envoyer</button>
             </div>
         </form>
     </div>
 
     <!-- Footer -->
-    <footer class="container-fluid d-flex justify-content-between bg-warning">
-        <div class="col-2 d-flex flex-column justify-content-around align-items-center">
+    <footer class="container-fluid row bg-warning m-0">
+        <div class="col d-flex flex-column justify-content-sm-between justify-content-center align-items-start">
             <h1 class="m-0 mt-3">Site</h1>
-            <i class="bi bi-camera-reels mb-3" style="font-size: 6rem"></i>
+            <i class="bi bi-camera-reels mb-3 d-none d-sm-block" style="font-size: 6rem"></i>
         </div>
 
-        <div class="d-flex flex-sm-row flex-column justify-content-center align-items-center">
+        <div class="col d-flex flex-sm-row flex-column justify-content-center align-items-center">
             <a class="text-dark text-decoration-none" href="https://twitter.com/">
                 <i class="bi bi-twitter m-3" style="font-size: 2rem"></i></a>
 
@@ -107,7 +109,7 @@
                 <i class="bi bi-youtube m-3" style="font-size: 2rem"></i></a>
         </div>
 
-        <div class="col-2 d-flex flex-column justify-content-center text-center">
+        <div class="col d-flex flex-column justify-content-center align-items-sm-end text-center">
             <a class="text-decoration-none text-dark mb-3" href="contact.html">Contact</a>
             <a class="text-decoration-none text-dark" href="#">Informations Légales</a>
         </div>

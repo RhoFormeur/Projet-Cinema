@@ -13,7 +13,7 @@
 
 <body class="bg-dark">
     <!-- Header -->
-    <header class="container-fluid bg-warning mb-3">
+    <header class="container-fluid bg-warning mb-4">
         <h1 class=" text-center m-0">Site</h1>
     </header>
 
@@ -83,11 +83,12 @@
                         <div class="mb-3">
                             <label for="inputpassword" class="form-label">Confirmation du mot de passe</label>
                             <input type="password" class="form-control" id="inputpassword">
+                            <div id="passwordHelpBlock" class="form-text">Votre mot de passe doit être compris entre
+                                8-20
+                                caractères, doit comprendre lettres et chiffres et ne doit pas avoir d'espaces, de
+                                caractères spéciaux ou emoji.</div>
                         </div>
                     </form>
-                    <div id="passwordHelpBlock" class="form-text">Votre mot de passe doit être compris entre 8-20
-                        caractères, doit comprendre lettres et chiffres et ne doit pas avoir d'espaces, de
-                        caractères spéciaux ou emoji.</div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-warning" data-bs-target="#SignupModalToggle"
                             data-bs-toggle="modal">Inscription</button>
@@ -150,13 +151,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="container-fluid d-flex justify-content-between bg-warning">
-        <div class="col-2 d-flex flex-column justify-content-around align-items-center">
+    <footer class="container-fluid row bg-warning m-0">
+        <div class="col d-flex flex-column justify-content-sm-between justify-content-center align-items-start">
             <h1 class="m-0 mt-3">Site</h1>
-            <i class="bi bi-camera-reels mb-3" style="font-size: 6rem"></i>
+            <i class="bi bi-camera-reels mb-3 d-none d-sm-block" style="font-size: 6rem"></i>
         </div>
 
-        <div class="d-flex flex-sm-row flex-column justify-content-center align-items-center">
+        <div class="col d-flex flex-sm-row flex-column justify-content-center align-items-center">
             <a class="text-dark text-decoration-none" href="https://twitter.com/">
                 <i class="bi bi-twitter m-3" style="font-size: 2rem"></i></a>
 
@@ -170,7 +171,7 @@
                 <i class="bi bi-youtube m-3" style="font-size: 2rem"></i></a>
         </div>
 
-        <div class="col-2 d-flex flex-column justify-content-center text-center">
+        <div class="col d-flex flex-column justify-content-center align-items-sm-end text-center">
             <a class="text-decoration-none text-dark mb-3" href="contact.html">Contact</a>
             <a class="text-decoration-none text-dark" href="#">Informations Légales</a>
         </div>
