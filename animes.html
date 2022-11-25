@@ -13,7 +13,7 @@
 
 <body class="bg-dark">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-warning mb-4">
+    <nav class="navbar navbar-expand-lg bg-warning mb-2 sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="profil.html">Projet Cinéma</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
@@ -44,8 +44,8 @@
     </nav>
 
     <!-- Cards -->
-    <div class="row row-cols-1 row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 mb-4 px-4 g-4">
-        <div class="col">
+    <div class="row row-cols-1 row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 m-0 g-3">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -102,7 +102,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -121,7 +121,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -140,7 +140,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -159,7 +159,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -178,7 +178,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -197,7 +197,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -216,7 +216,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col p-2 m-0">
             <div class="card border border-3 border-warning rounded-2">
                 <a href="fiche-article.html"><img src="Images/SW3.jpg" class="card-img-top" alt="Affiche"></a>
                 <div class="card-body">
@@ -236,31 +236,35 @@
         </div>
     </div>
 
+    <!-- Nav Pagination -->
+    <nav class="mt-2" aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link bg-warning text-dark">Previous</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="#">Next</a></li>
+        </ul>
+    </nav>
+    
     <!-- Footer -->
-    <footer class="container-fluid row bg-warning m-0">
-        <div class="col d-flex flex-column justify-content-sm-between justify-content-center align-items-start">
-            <h1 class="m-0 mt-3">Site</h1>
-            <i class="bi bi-camera-reels mb-3 d-none d-sm-block" style="font-size: 6rem"></i>
-        </div>
-
+    <footer class="container-fluid row bg-warning mt-2 m-0">
+        <h1 class="col d-flex align-items-center m-0">Site</h1>
         <div class="col d-flex flex-sm-row flex-column justify-content-center align-items-center">
             <a class="text-dark text-decoration-none" href="https://twitter.com/">
-                <i class="bi bi-twitter m-3" style="font-size: 2rem"></i></a>
+                <i class="bi bi-twitter m-3" style="font-size: 3rem"></i></a>
 
             <a class="text-dark text-decoration-none" href="https://www.facebook.com/">
-                <i class="bi bi-facebook m-3" style="font-size: 2rem"></i></a>
+                <i class="bi bi-facebook m-3" style="font-size: 3rem"></i></a>
 
             <a class="text-dark text-decoration-none" href="https://www.linkedin.com/">
-                <i class="bi bi-linkedin m-3" style="font-size: 2rem"></i></a>
+                <i class="bi bi-linkedin m-3" style="font-size: 3rem"></i></a>
 
-            <a class="text-dark text-decoration-none" href="https://www.youtube.com/">
-                <i class="bi bi-youtube m-3" style="font-size: 2rem"></i></a>
+            <a class="text-dark text-decoration-none" href="https://github.com/">
+                <i class="bi bi-github m-3" style="font-size: 3rem"></i></a>
         </div>
-
-        <div class="col d-flex flex-column justify-content-center align-items-sm-end text-center">
-            <a class="text-decoration-none text-dark mb-3" href="contact.html">Contact</a>
-            <a class="text-decoration-none text-dark" href="#">Informations Légales</a>
-        </div>
+        <a class="col d-flex justify-content-end align-items-center text-decoration-none text-dark"
+            href="contact.html">Contact</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
