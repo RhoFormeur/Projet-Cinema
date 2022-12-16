@@ -1,0 +1,32 @@
+{
+  "name": "projet-cinema",
+  "version": "0.1.0",
+  "description": "Site pour lister les films deja visionné ou à voir",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RhoFormeur/Projet-Cinema.git"
+  },
+  "keywords": [
+    "liste",
+    "film",
+    "serie",
+    "anime",
+    "database"
+  ],
+  "author": "Maxime",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RhoFormeur/Projet-Cinema/issues"
+  },
+  "homepage": "https://github.com/RhoFormeur/Projet-Cinema#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6"
+  }
+}
