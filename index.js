@@ -1,149 +1,200 @@
-const express = require('express');
-const { engine } = require('express-handlebars');
+const express = require("express");
+const { engine } = require("express-handlebars");
 
 const app = express();
 const PORT_NODE = 3000;
 
 /*
- * Configuration Handlebars 
+ * Configuration Handlebars
  ***************************/
 
 // ! Import des helpers
-const { limitArr, toUpper } = require('./helper')
+const { limitArr, toUpper } = require("./helper");
 
-app.engine('hbs', engine({
-    // ! initialisation des helpers dans notre handlebars
-    helpers: {
-        limitArr,
-        toUpper
-    },
-    extname: 'hbs',
-    defaultLayout: 'main'
-}));
-app.set('view engine', 'hbs');
-app.set('views', './views');
+app.engine(
+    "hbs",
+    engine({
+        // ! initialisation des helpers dans notre handlebars
+        helpers: {
+            limitArr,
+            toUpper,
+        },
+        extname: "hbs",
+        defaultLayout: "main",
+    })
+);
+app.set("view engine", "hbs");
+app.set("views", "./views");
 
 /*
- * Routes 
+ * Routes
  *********/
 const arrTrend = [
     {
+        id: 0,
         titre: "Avatar : La Voie de l'eau",
-        poster: "https://image.tmdb.org/t/p/original/hYeB9GpFaT7ysabBoGG5rbo9mF4.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/hYeB9GpFaT7ysabBoGG5rbo9mF4.jpg",
     },
     {
+        id: 1,
         titre: "Mercredi",
-        poster: "https://image.tmdb.org/t/p/original/9ifSmhXDP36tFZXdcczJzRDGo5b.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/9ifSmhXDP36tFZXdcczJzRDGo5b.jpg",
     },
     {
+        id: 2,
         titre: "Black Adam",
-        poster: "https://image.tmdb.org/t/p/original/hYALH5NPM7xk2XQd2J8wrfmliIW.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/hYALH5NPM7xk2XQd2J8wrfmliIW.jpg",
     },
     {
+        id: 3,
         titre: "Pinocchio par Guillermo del Toro",
-        poster: "https://image.tmdb.org/t/p/original/ftnEmnoHI5Znlzg0TwGcSMoXJt1.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/ftnEmnoHI5Znlzg0TwGcSMoXJt1.jpg",
     },
     {
+        id: 4,
         titre: "Emancipation",
-        poster: "https://image.tmdb.org/t/p/original/7VzVBcklUx4WiXFtutlOJZrBwY0.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/7VzVBcklUx4WiXFtutlOJZrBwY0.jpg",
     },
     {
+        id: 5,
         titre: "Les Banshees d'Inisherin",
-        poster: "https://image.tmdb.org/t/p/original/5Y0AINkH7xDqmuxJXUQdPbtyrub.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/5Y0AINkH7xDqmuxJXUQdPbtyrub.jpg",
     },
     {
+        id: 6,
         titre: "Troll",
-        poster: "https://image.tmdb.org/t/p/original/9z4jRr43JdtU66P0iy8h18OyLql.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/9z4jRr43JdtU66P0iy8h18OyLql.jpg",
     },
     {
+        id: 7,
         titre: "Les Gardiens de la Galaxie : Joyeuses Fêtes",
-        poster: "https://image.tmdb.org/t/p/original/cF3E6CrCm3NUy5PDRBbGyXRChYb.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/cF3E6CrCm3NUy5PDRBbGyXRChYb.jpg",
     },
     {
+        id: 8,
         titre: "Avatar",
-        poster: "https://image.tmdb.org/t/p/original/3npygfmEhqnmNTmDWhHLz1LPcbA.jpg",
-
+        poster:
+            "https://image.tmdb.org/t/p/original/3npygfmEhqnmNTmDWhHLz1LPcbA.jpg",
     },
     {
+        id: 9,
         titre: "Black Panther : Wakanda Forever",
-        poster: "https://image.tmdb.org/t/p/original/rNTKgJdJ8tyfpiUug5ittECK8CS.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/rNTKgJdJ8tyfpiUug5ittECK8CS.jpg",
     },
     {
+        id: 10,
         titre: "Bones and All",
-        poster: "https://image.tmdb.org/t/p/original/fmjOEHYMQang2sMuM1fz5ddaEc2.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/fmjOEHYMQang2sMuM1fz5ddaEc2.jpg",
     },
     {
+        id: 11,
         titre: "Willow",
-        poster: "https://image.tmdb.org/t/p/original/jhdSPDlhswjN1r6O0pGP3ZvQgU8.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/jhdSPDlhswjN1r6O0pGP3ZvQgU8.jpg",
     },
     {
+        id: 12,
         titre: "NANNY",
-        poster: "https://image.tmdb.org/t/p/original/mPhXHRudGxsXIQq1WM6oVePkFIp.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/mPhXHRudGxsXIQq1WM6oVePkFIp.jpg",
     },
     {
+        id: 13,
         titre: "Top Gun : Maverick",
-        poster: "https://image.tmdb.org/t/p/original/kTh1s6I6yUyk2OGiRoGkDTYTS6K.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/kTh1s6I6yUyk2OGiRoGkDTYTS6K.jpg",
     },
     {
+        id: 14,
         titre: "Trésors perdus : Le secret de Moctezuma",
-        poster: "https://image.tmdb.org/t/p/original/j6UMjLEKcQDT7Ozvphh0r5QvWro.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/j6UMjLEKcQDT7Ozvphh0r5QvWro.jpg",
     },
     {
+        id: 15,
         titre: "La Nuit au Musée : Le retour de Kahmunrah",
-        poster: "https://image.tmdb.org/t/p/original/zXwQGAx7jmbhpCJP3jcC9IUCBfd.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/zXwQGAx7jmbhpCJP3jcC9IUCBfd.jpg",
     },
     {
+        id: 16,
         titre: "La Proie du Diable",
-        poster: "https://image.tmdb.org/t/p/original/jZaug9eRUbYFT1PKWwD4CDRe8gO.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/jZaug9eRUbYFT1PKWwD4CDRe8gO.jpg",
     },
     {
+        id: 17,
         titre: "Smile",
-        poster: "https://image.tmdb.org/t/p/original/3kbtoJw6ZN0UUQhSuiRbAatr2kV.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/3kbtoJw6ZN0UUQhSuiRbAatr2kV.jpg",
     },
     {
+        id: 18,
         titre: "His Dark Materials : À la croisée des mondes",
-        poster: "https://image.tmdb.org/t/p/original/yxkepbA5TFZkQ7ThRjbV08QXRCq.jpg",
+        poster:
+            "https://image.tmdb.org/t/p/original/yxkepbA5TFZkQ7ThRjbV08QXRCq.jpg",
     },
     {
+        id: 19,
         titre: "The Fabelmans",
-        poster: "https://image.tmdb.org/t/p/original/4HNGWeWe1w0KT8A829cU5uVVeWK.jpg",
-    }
-]
+        poster:
+            "https://image.tmdb.org/t/p/original/4HNGWeWe1w0KT8A829cU5uVVeWK.jpg",
+    },
+];
+
 // Première route
-app.get('/', (req, res) => {
-    res.render('home', {
+app.get("/", (req, res) => {
+    res.render("home", {
         layout: "home",
     });
 });
 
 // Deuxième route
-app.get('/profil', (req, res) => {
-    res.render('profil');
+app.get("/profil", (req, res) => {
+    res.render("profil");
 });
 
 // Troisième route
-app.get('/films', (req, res) => {
-    res.render('films', { list: arrTrend });
+app.get("/films", (req, res) => {
+    res.render("films", { list: arrTrend });
+});
+
+app.get(`/films/:id`, (req, res) => {
+    console.log(`route film/id`, req.params.id);
+    const article = arrTrend.filter((arrTrend) => arrTrend.id == req.params.id);
+    console.log(article);
+    if (!article[0]) return res.redirect('/')
+    res.render("fiche-article", { article: article[0] });
 });
 
 // Quatrième route
-app.get('/series', (req, res) => {
-    res.render('series', { list: arrTrend });
+app.get("/series", (req, res) => {
+    res.render("series", { list: arrTrend });
 });
 
 // Cinquième route
-app.get('/animes', (req, res) => {
-    res.render('animes', { list: arrTrend });
+app.get("/animes", (req, res) => {
+    res.render("animes", { list: arrTrend });
 });
 
 // Sixième route
-app.get('/fiche-article', (req, res) => {
-    res.render('fiche-article');
+app.get("/fiche-article", (req, res) => {
+    res.render("fiche-article");
 });
 
 // Septième route
-app.get('/contact', (req, res) => {
-    res.render('contact');
+app.get("/contact", (req, res) => {
+    res.render("contact");
 });
 
 // // Admin page
@@ -154,4 +205,6 @@ app.get('/contact', (req, res) => {
 // });
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
-app.listen(PORT_NODE, () => console.log(`Server start on localhost:${PORT_NODE} 🚀`));
+app.listen(PORT_NODE, () =>
+    console.log(`Server start on localhost:${PORT_NODE} 🚀`)
+);
