@@ -1,0 +1,29 @@
+{{!-- List User --}}
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+            <h3 class="m-0">Utilisateurs</h3>
+        </div>
+        <div>
+            <button type="button" class="btn btn-warning">Ajouter</i></button>
+        </div>
+    </li>
+    {{#each user}}
+    {{> list-user data=this}}
+    {{/each}}
+</ul>
+
+{{!-- List Article --}}
+<ul class="list-group mt-2">
+    <li class="list-group-item d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+            <h3 class="m-0">Articles</h3>
+        </div>
+        <div>
+            <button type="button" class="btn btn-warning">Ajouter</i></button>
+        </div>
+    </li>
+    {{#each list}}
+    {{> list-article data=this}}
+    {{/each}}
+</ul>

@@ -11,17 +11,15 @@ const PORT_NODE = 3000;
 // ! Import des helpers
 const { limitArr, toUpper } = require("./helper");
 
-app.engine(
-    "hbs",
-    engine({
-        // ! initialisation des helpers dans notre handlebars
-        helpers: {
-            limitArr,
-            toUpper,
-        },
-        extname: "hbs",
-        defaultLayout: "main",
-    })
+app.engine("hbs", engine({
+    // ! initialisation des helpers dans notre handlebars
+    helpers: {
+        limitArr,
+        toUpper,
+    },
+    extname: "hbs",
+    defaultLayout: "main",
+})
 );
 app.set("view engine", "hbs");
 app.set("views", "./views");
@@ -152,6 +150,16 @@ const arrTrend = [
     },
 ];
 
+const arrUser = [
+    { id: 0, username: "Bruno" },
+    { id: 1, username: "Obi-Wan" },
+    { id: 2, username: "Maxime" },
+    { id: 3, username: "Jean-Michel Apeupré" },
+    { id: 4, username: "Olivier de Carglass" },
+    { id: 5, username: "Olivier de la Milice" },
+    { id: 6, username: "Freezer" },
+    { id: 7, username: "Marie-Thérèse" },
+]
 // Première route
 app.get("/", (req, res) => {
     res.render("home", {
@@ -197,12 +205,15 @@ app.get("/contact", (req, res) => {
     res.render("contact");
 });
 
-// // Admin page
-// app.get('/admin', (req, res) => {
-//     res.render('admin', {
-//         layout: "admin",
-//     });
-// });
+// Admin page
+app.get('/admin', (req, res) => {
+    res.render('admin', { list: arrTrend, user: arrUser });
+});
+
+// 404 page
+app.get("*", (req, res) => {
+    res.render("404")
+});
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
 app.listen(PORT_NODE, () =>
