@@ -162,19 +162,19 @@ const arrUser = [
 ]
 // Première route
 app.get("/", (req, res) => {
-    res.render("home", {
+    res.render("pages/home", {
         layout: "home",
     });
 });
 
 // Deuxième route
 app.get("/profil", (req, res) => {
-    res.render("profil");
+    res.render("pages/profil");
 });
 
 // Troisième route
 app.get("/films", (req, res) => {
-    res.render("films", { list: arrTrend });
+    res.render("pages/films", { list: arrTrend });
 });
 
 app.get(`/films/:id`, (req, res) => {
@@ -182,37 +182,37 @@ app.get(`/films/:id`, (req, res) => {
     const article = arrTrend.filter((arrTrend) => arrTrend.id == req.params.id);
     console.log(article);
     if (!article[0]) return res.redirect('/')
-    res.render("fiche-article", { article: article[0] });
+    res.render("pages/fiche-article", { article: article[0] });
 });
 
 // Quatrième route
 app.get("/series", (req, res) => {
-    res.render("series", { list: arrTrend });
+    res.render("pages/series", { list: arrTrend });
 });
 
 // Cinquième route
 app.get("/animes", (req, res) => {
-    res.render("animes", { list: arrTrend });
+    res.render("pages/animes", { list: arrTrend });
 });
 
 // Sixième route
 app.get("/fiche-article", (req, res) => {
-    res.render("fiche-article");
+    res.render("pages/fiche-article");
 });
 
 // Septième route
 app.get("/contact", (req, res) => {
-    res.render("contact");
+    res.render("pages/contact");
 });
 
 // Admin page
 app.get('/admin', (req, res) => {
-    res.render('admin', { list: arrTrend, user: arrUser });
+    res.render('pages/admin', { list: arrTrend, user: arrUser });
 });
 
 // 404 page
 app.get("*", (req, res) => {
-    res.render("404")
+    res.render("pages/404")
 });
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
