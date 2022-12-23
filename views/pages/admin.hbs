@@ -1,29 +1,89 @@
 {{!-- List User --}}
-<ul class="list-group">
-    <li class="list-group-item d-flex justify-content-between">
-        <div class="d-flex align-items-center">
-            <h3 class="m-0">Utilisateurs</h3>
-        </div>
-        <div>
-            <button type="button" class="btn btn-warning">Ajouter</i></button>
-        </div>
-    </li>
-    {{#each user}}
-    {{> admin/list-user data=this}}
-    {{/each}}
-</ul>
+<div class="container-fluid p-3">
+    <h3 class="bg-light">Utilisateurs</h3>
+    <table class="table table-striped bg-light">
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Role</th>
+                <th scope="col" class="d-flex justify-content-end"><button type="button" class="btn btn-warning"
+                        data-bs-toggle="modal" data-bs-target="#modalAjouterUser">Ajouter</i></button></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each user}}
+            {{> admin/user data=this}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 
 {{!-- List Article --}}
-<ul class="list-group mt-2">
-    <li class="list-group-item d-flex justify-content-between">
-        <div class="d-flex align-items-center">
-            <h3 class="m-0">Articles</h3>
+<div class="container-fluid p-3">
+    <h3 class="bg-light">Articles</h3>
+    <table class="table table-striped bg-light">
+        <thead>
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col" class="d-flex justify-content-end"><button type="button"
+                        class="btn btn-warning">Ajouter</i></button></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each list}}
+            {{> admin/article data=this}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- Modal Ajouter User --}}
+<div class="modal fade" id="modalAjouterUser" tabindex="-1" aria-labelledby="modalAjouterUser" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAjoutUser">Ajout Utilisateur</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Identifiant</label>
+                        <input type="text" class="form-control" id="inputUsername">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputMail" class="form-label">Mail</label>
+                        <input type="email" class="form-control" id="inputMail">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">Mot de Passe</label>
+                        <input type="password" id="inputPassword" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputConfirm" class="form-label">Confirmer</label>
+                        <input type="password" id="inputConfirm" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="roleSelect" class="form-label">Rôle</label>
+                        <select id="roleSelect" class="form-select">
+                            <option>Grand Maître</option>
+                            <option>Maître de l'ordre</option>
+                            <option>Chevalier Jedi</option>
+                            <option>Padawan</option>
+                            <option>Initié</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-warning">Ajouter</button>
+                    </div>
+                </form>
+
+            </div>
         </div>
-        <div>
-            <button type="button" class="btn btn-warning">Ajouter</i></button>
-        </div>
-    </li>
-    {{#each list}}
-    {{> admin/list-article data=this}}
-    {{/each}}
-</ul>
+    </div>
+</div>

@@ -151,14 +151,14 @@ const arrTrend = [
 ];
 
 const arrUser = [
-    { id: 0, username: "Bruno" },
-    { id: 1, username: "Obi-Wan" },
-    { id: 2, username: "Maxime" },
-    { id: 3, username: "Jean-Michel Apeupré" },
-    { id: 4, username: "Olivier de Carglass" },
-    { id: 5, username: "Olivier de la Milice" },
-    { id: 6, username: "Freezer" },
-    { id: 7, username: "Marie-Thérèse" },
+    { id: 0, username: "Bruno", role: "initié" },
+    { id: 1, username: "Obi-Wan", role: "Maître de l'ordre" },
+    { id: 2, username: "Maxime", role: "Grand Maître" },
+    { id: 3, username: "Jean-Michel Apeupré", role: "initié" },
+    { id: 4, username: "Olivier de Carglass", role: "initié" },
+    { id: 5, username: "Olivier de la Milice", role: "initié" },
+    { id: 6, username: "Freezer", role: "initié" },
+    { id: 7, username: "Marie-Thérèse", role: "initié" },
 ]
 // Première route
 app.get("/", (req, res) => {
