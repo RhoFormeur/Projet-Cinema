@@ -1,17 +1,89 @@
 {{!-- 1 Article --}}
-<tr>
-    <td scope="row">{{this.titre}}</td>
+<tr class="table-secondary">
+    <td>{{this.titre}}</td>
     <td class="d-flex justify-content-end gap-1">
-        <button type="button" class="btn btn-warning" data-bs-toggle="collapse" data-bs-target="#collapseOpen{{this.id}}"
-            aria-expanded="false" aria-controls="collapseOpen{{this.id}}"><i class="fa-regular fa-eye"></i></button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
+            data-bs-target="#collapseReadArticle{{this.id}}" aria-expanded="false"
+            aria-controls="collapseReadArticle{{this.id}}">
+            <i class="fa-regular fa-eye"></i></button>
 
-        <button type="button" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></button>
-        <button type="button" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
+            data-bs-target="#collapseUpdateArticle{{this.id}}" aria-expanded="false"
+            aria-controls="collapseUpdateArticle{{this.id}}">
+            <i class="fa-regular fa-pen-to-square"></i></button>
+
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#modalDeleteArticle{{this.id}}">
+            <i class="fa-regular fa-trash-can"></i></button>
     </td>
-    <div class="collapse" id="collapseOpen{{this.id}}">
+</tr>
+
+{{!-- Collapse Read --}}
+<tr class="table-warning">
+    <td colspan="2" class="collapse" id="collapseReadArticle{{this.id}}">
         <div class="card card-body">
-            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the
-            user activates the relevant trigger.
+            <article class="row row-cols-1 row-cols-lg-2 m-0">
+                <img class="col p-2" src="{{this.poster}}" alt="Affiche" />
+                <div class="col m-0 p-2">
+                    <h4>Titre : {{this.titre}}</h4>
+                    <p>Année : 2005</p>
+                    <p>Durée : 2h 20min</p>
+                    <p>Certificat : Tous publics</p>
+                    <p>Genre : Action - Aventure - Fantastique</p>
+                    <p>Réalisateur : George Lucas</p>
+                    <p>Acteurs principaux : Ewan McGregor, Natalie Portman, Hayden Christensen</p>
+                    <p>Résumé : Dans la troisième année de la Guerre des Clones, le Jedi sauve
+                        Palpatine du Comte Dooku. Alors qu'Obi-Wan se lance à la poursuite d'une
+                        nouvelle menace, Anakin agit comme agent double entre le Conseil Jedi et
+                        Palpatine, et il est attiré dans un plan sinistre pour régner sur la
+                        galaxie.</p>
+                </div>
+            </article>
+        </div>
+    </td>
+</tr>
+
+{{!-- Collapse Update --}}
+<tr class="table-warning">
+    <td colspan="2" class="collapse" id="collapseUpdateArticle{{this.id}}">
+        <div class="card card-body">
+            <article class="row row-cols-1 row-cols-lg-2 m-0">
+                <img class="col p-2" src="{{this.poster}}" alt="Affiche" />
+                <div class="col m-0 p-2">
+                    <h4>Titre : {{this.titre}}</h4>
+                    <p>Année : 2005</p>
+                    <p>Durée : 2h 20min</p>
+                    <p>Certificat : Tous publics</p>
+                    <p>Genre : Action - Aventure - Fantastique</p>
+                    <p>Réalisateur : George Lucas</p>
+                    <p>Acteurs principaux : Ewan McGregor, Natalie Portman, Hayden Christensen</p>
+                    <p>Résumé : Dans la troisième année de la Guerre des Clones, le Jedi sauve
+                        Palpatine du Comte Dooku. Alors qu'Obi-Wan se lance à la poursuite d'une
+                        nouvelle menace, Anakin agit comme agent double entre le Conseil Jedi et
+                        Palpatine, et il est attiré dans un plan sinistre pour régner sur la
+                        galaxie.</p>
+                </div>
+            </article>
+        </div>
+    </td>
+</tr>
+
+{{!-- Modal Delete Article --}}
+<div class="modal fade" id="modalDeleteArticle{{this.id}}" tabindex="-1" aria-labelledby="modalDeleteArticle{{this.id}}"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalDeleteArticle{{this.id}}">Confirmer</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Vous confirmez la suppression de cet article ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Oui</button>
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
+            </div>
         </div>
     </div>
-</tr>
+</div>
