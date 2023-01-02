@@ -1,7 +1,7 @@
 {{!-- List User --}}
 <div class="container-fluid p-3">
     <h3 class="bg-light">Utilisateurs</h3>
-    <table class="table table-scroll bg-light">
+    <table class="table bg-light">
         <thead>
             <tr>
                 <th scope="col">Username</th>
@@ -10,20 +10,18 @@
                         data-bs-toggle="modal" data-bs-target="#modalAddUser">Ajouter</i></button></th>
             </tr>
         </thead>
-        <div class="w-100 h-50 overflow-auto">
             <tbody>
                 {{#each user}}
                 {{> admin/user data=this}}
                 {{/each}}
             </tbody>
-        </div>
     </table>
 </div>
 
 {{!-- List Article --}}
 <div class="container-fluid p-3">
     <h3 class="bg-light">Articles</h3>
-    <table class="table table-scroll bg-light">
+    <table class="table bg-light">
         <thead>
             <tr>
                 <th scope="col">Titre</th>
@@ -31,13 +29,11 @@
                         data-bs-toggle="modal" data-bs-target="#modalAddArticle">Ajouter</i></button></th>
             </tr>
         </thead>
-        <div class="w-100 h-50 overflow-auto">
             <tbody>
                 {{#each list}}
                 {{> admin/article data=this}}
                 {{/each}}
             </tbody>
-        </div>
     </table>
 </div>
 
