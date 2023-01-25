@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-warning mb-2 sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">ScreenMaze</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav me-auto">
+                <li>
+                    <a class="nav-link" href="/admin"><i class="bi bi-database"></i></a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/profil"><i class="bi bi-person"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/films">Films</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/series">Séries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/animes">Animes</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+            <div class="d-flex justify-content-end ms-lg-2 ms-0 mt-lg-0 mt-2">
+                <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#logOutConfirm"><i class="bi bi-box-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="logOutConfirm" tabindex="-1" aria-labelledby="logOutConfirm" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="logOutConfirm">Déconnexion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Voulez-vous vraiment vous déconnecter ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-warning">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>

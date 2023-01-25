@@ -1,13 +1,13 @@
 <div class="col p-2 m-0">
     <div class="card border border-3 border-warning rounded-2 h-100">
-        <a href="/films/{{this.id}}"><img src="{{this.poster}}"
+        <a href="/films/{{this.id_article}}"><img src="https://image.tmdb.org/t/p/original{{this.poster_path}}"
                 class="card-img-top" alt="Affiche"/></a>
         <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title text-center mb-3">{{this.titre}}</h5>
+            <h5 class="card-title text-center mb-3">{{this.title}}</h5>
             <div class="row justify-content-center gap-4">
-                <button class="col btn btn-outline-warning" data-bs-toggle="button"><i class="bi bi-eye"></i></button>
+                {{!-- <button class="col btn btn-outline-warning" data-bs-toggle="button"><i class="bi bi-eye"></i></button>
                 <button class="col btn btn-outline-warning" data-bs-toggle="button"><i
-                        class="bi bi-plus-circle"></i></button>
+                        class="bi bi-plus-circle"></i></button> --}}
                 <button class="col btn btn-outline-warning" data-bs-toggle="button"><i
                         class="bi bi-hand-thumbs-up"></i></button>
                 <button class="col btn btn-outline-warning" data-bs-toggle="button"><i
