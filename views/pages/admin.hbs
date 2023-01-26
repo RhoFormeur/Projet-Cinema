@@ -1,5 +1,23 @@
 {{!-- List User --}}
 <div class="container-fluid p-3">
+    <h3 class="bg-light">Commentaires signalés</h3>
+    <table class="table bg-light">
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th>Date du signalement</th>
+            </tr>
+        </thead>
+            <tbody>
+                {{#each comments}}
+                {{> admin/comment_admin data=this}}
+                {{/each}}
+            </tbody>
+    </table>
+</div>
+
+{{!-- List User --}}
+<div class="container-fluid p-3">
     <h3 class="bg-light">Utilisateurs</h3>
     <table class="table bg-light">
         <thead>

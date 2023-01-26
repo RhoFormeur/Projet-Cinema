@@ -105,7 +105,8 @@ app.get(`/films/:id`, async (req, res) => {
     const { id } = req.params
     const data = await db.query(`SELECT * FROM articles WHERE id_article=${id}`)
     const comments = await db.query(`SELECT comments.content, comments.created_at, users.username FROM comments INNER JOIN users ON comments.id_user=users.id_user WHERE id_article=${id}`)
-    res.render("pages/fiche_article", { data:data[0], comments})
+    const genres = await db.query(`SELECT id_article,name FROM articles_genres INNER JOIN genres ON genres.id_genre=articles_genres.id_genre WHERE id_article=${id}`)
+    res.render("pages/fiche_article", { data:data[0], comments, genres})
 })
 
 // Quatrième route
@@ -140,7 +141,8 @@ app.get("/contact", (req, res) => {
 app.get('/admin', async (req, res) => {
     const articles = await db.query(`SELECT * FROM articles`)
     const users = await db.query(`SELECT * FROM users`)
-    res.render("pages/admin", { articles, users, layout: 'layout_admin' })
+    const comments = await db.query(`SELECT id_comment,content,username,comments.updated_at FROM comments INNER JOIN users ON comments.id_user=users.id_user WHERE is_reported=1`)
+    res.render("pages/admin", { articles, users, comments, layout: 'layout_admin' })
 })
 
 // POST ARTICLE - CREATE

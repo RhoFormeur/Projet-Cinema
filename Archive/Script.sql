@@ -17,7 +17,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE articles(
-   id_article INT AUTO_INCREMENT,
+   id_article INT NOT NULL,
    title VARCHAR(255) NOT NULL,
    release_date DATE NOT NULL,
    overview TEXT NOT NULL,
@@ -44,22 +44,22 @@ CREATE TABLE comments(
 );
 
 CREATE TABLE genres(
-   id_genre INT AUTO_INCREMENT,
+   id_genre INT NOT NULL,
    name VARCHAR(45) NOT NULL,
    PRIMARY KEY(id_genre)
 );
 
 CREATE TABLE articles_genres(
-   id_article INT,
-   id_genre INT,
+   id_article INT NOT NULL,
+   id_genre INT NOT NULL,
    PRIMARY KEY(id_article, id_genre),
    FOREIGN KEY(id_article) REFERENCES articles(id_article),
    FOREIGN KEY(id_genre) REFERENCES genres(id_genre)
 );
 
 CREATE TABLE likes(
-   id_user INT,
-   id_article INT,
+   id_user INT NOT NULL,
+   id_article INT NOT NULL,
    is_liked TINYINT NOT NULL,
    PRIMARY KEY(id_user, id_article),
    FOREIGN KEY(id_user) REFERENCES users(id_user),
