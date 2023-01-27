@@ -94,7 +94,7 @@ app.get("/profil", (req, res) => {
 
 // Troisième route
 app.get("/films", (req, res) => {
-    db.query(`SELECT * FROM articles`, function (err, data) {
+    db.query(`SELECT * FROM articles WHERE type = "movie"`, function (err, data) {
         if (err) throw err;
         // Rendu de la page films avec les data de la requête SQL précédente
         res.render("pages/films", { data })
@@ -111,10 +111,10 @@ app.get(`/films/:id`, async (req, res) => {
 
 // Quatrième route
 app.get("/series", (req, res) => {
-    db.query(`SELECT * FROM articles`, function (err, data) {
+    db.query(`SELECT * FROM articles WHERE type = "serie"`, function (err, data) {
         if (err) throw err;
         // Rendu de la page films avec les data de la requête SQL précédente
-        res.render("pages/films", { data })
+        res.render("pages/series", { data })
     })
 });
 

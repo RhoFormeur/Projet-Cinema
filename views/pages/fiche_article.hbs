@@ -8,9 +8,9 @@
         <p>Sortie : {{formatDate data.release_date 'DD/MM/YYYY'}}</p>
         <p>Certificat : Tous publics</p>
         <div class="d-flex">
-            <p>Genres :</p>
+            <p class="me-1">Genres :</p>
             {{#each genres}}
-            {{> global/genre data=this}}
+            <p class="mx-1">{{this.name}}</p>
             {{/each}}
         </div>
         <p>Réalisateur : George Lucas</p>
