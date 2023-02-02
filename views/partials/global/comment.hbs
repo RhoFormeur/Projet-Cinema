@@ -2,67 +2,71 @@
     <td>
         <div class="d-flex">
             <p class="text-primary">{{this.username}}</p>
-            <p class="text-muted">{{formatCommentDate this.created_at}}</p>
+            <p class="text-muted">{{formatCommentDate this.updated_at}}</p>
         </div>
         <p class="ms-5">{{this.content}}</p>
         <div class="d-flex">
             <button type="button" class="btn btn-link" data-bs-toggle="modal"
-            data-bs-target="#modalUpdateComment{{this.id_comment}}">éditer</button>
+                data-bs-target="#modalUpdateComment">éditer</button>
             <button type="button" class="btn btn-link" data-bs-toggle="modal"
-            data-bs-target="#modalDeleteComment{{this.id_comment}}">supprimer</button>
+                data-bs-target="#modalDeleteComment">supprimer</button>
             <button type="button" class="btn btn-link" data-bs-toggle="modal"
-            data-bs-target="#modalReportComment{{this.id_comment}}">signaler</button>
+                data-bs-target="#modalReportComment">signaler</button>
         </div>
     </td>
 </tr>
 
 {{!-- Modal Update Comment --}}
-<div class="modal fade" id="modalUpdateComment{{this.id_comment}}" tabindex="-1"
-    aria-labelledby="modalUpdateComment{{this.id_comment}}" aria-hidden="true">
+<div class="modal fade" id="modalUpdateComment" tabindex="-1" aria-labelledby="modalUpdateComment" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalUpdateComment{{this.id_comment}}">Confirmer</h1>
+                <h1 class="modal-title fs-5" id="modalUpdateComment">Confirmer</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <textarea class="w-100" name="content" id="updateComment" rows="3">{{this.content}}</textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-warning" >Valider</button>
-            </div>
+            <form action="/article/:id?_method=PUT" method="post" class="modal-body">
+                <div class="w-100 d-flex flex-column mb-4 px-2">
+                    <input type="number" id="inputIdComment" name="id_comment" value="{{this.id_comment}}" style="display: none;">
+                    <label for="inputUpdateComment">Commentaire</label>
+                    <textarea name="content" id="inputUpdateComment" rows="3">{{this.content}}</textarea>
+                </div>
+                <div class="d-flex justify-content-end mb-2">
+                    <button type="button" class="btn btn-danger me-2" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-warning me-2">Valider</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 {{!-- Modal Delete Comment --}}
-<div class="modal fade" id="modalDeleteComment{{this.id_comment}}" tabindex="-1"
-    aria-labelledby="modalDeleteComment{{this.id_comment}}" aria-hidden="true">
+<div class="modal fade" id="modalDeleteComment" tabindex="-1" aria-labelledby="modalDeleteComment" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalDeleteComment{{this.id_comment}}">Confirmer</h1>
+                <h1 class="modal-title fs-5" id="modalDeleteComment">Confirmer</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <p>Vous confirmez la suppression de ce commentaire ?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Oui</button>
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
-            </div>
+            <form action="/article/:id?_method=DELETE" method="post" class="modal-body">
+                <div class="w-100 d-flex flex-column mb-4 px-2">
+                    <p class="text-center">Vous confirmez la suppression de ce commentaire ?</p>
+                    <input type="number" name="id_comment" id="inputIdComment" value="{{id_comment}}" style="display: none;">
+                </div>
+                <div class="d-flex justify-content-end mb-2">
+                    <button type="button" class="btn btn-warning me-2" data-bs-dismiss="modal">Non</button>
+                    <button type="submit" class="btn btn-danger me-2">Oui</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 {{!-- Modal Report Comment --}}
-<div class="modal fade" id="modalReportComment{{this.id_comment}}" tabindex="-1"
-    aria-labelledby="modalReportComment{{this.id_comment}}" aria-hidden="true">
+<div class="modal fade" id="modalReportComment" tabindex="-1" aria-labelledby="modalReportComment" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalReportComment{{this.id_comment}}">Confirmer</h1>
+                <h1 class="modal-title fs-5" id="modalReportComment">Confirmer</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

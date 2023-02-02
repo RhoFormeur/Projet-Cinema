@@ -17,10 +17,26 @@
         <p>Acteurs principaux : Ewan McGregor, Natalie Portman, Hayden Christensen</p>
         <p>Résumé : {{data.overview}}</p>
         <div class="d-flex justify-content-around my-4">
+            {{#if likes}}
+            {{#each likes}}
+            {{#if this.is_liked}}
+            <button class="col-3 btn btn-outline-warning active" data-bs-toggle="button" aria-pressed="true"><i
+                    class="bi bi-hand-thumbs-up"></i></button>
+            <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
+                    class="bi bi-hand-thumbs-down"></i></button>
+            {{else}}
+            <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
+                    class="bi bi-hand-thumbs-up"></i></button>
+            <button class="col-3 btn btn-outline-warning active" data-bs-toggle="button" aria-pressed="true"><i
+                    class="bi bi-hand-thumbs-down"></i></button>
+            {{/if}}
+            {{/each}}
+            {{else}}
             <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
                     class="bi bi-hand-thumbs-up"></i></button>
             <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
                     class="bi bi-hand-thumbs-down"></i></button>
+            {{/if}}
         </div>
 
     </div>
