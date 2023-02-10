@@ -45,7 +45,7 @@
         <div class="card card-body">
             <article class="row row-cols-1 row-cols-lg-2 m-0">
                 <img class="col p-2" src="https://image.tmdb.org/t/p/original{{this.poster_path}}" alt="Affiche" />
-                <form class="col m-0 p-2">
+                <form action="/admin/{{this.id_article}}?_method=PUT" method="post" class="col m-0 p-2">
                     <div class="d-flex flex-column">
                         <label for="inputTitle">Titre</label>
                         <input type="text" name="title" id="inputTitle" value="{{this.title}}">
@@ -83,7 +83,6 @@
                     <div class="d-flex justify-content-end mt-4">
                         <button type="submit" class="btn btn-warning">Update</button>
                     </div>
-
                 </form>
             </article>
         </div>
@@ -94,7 +93,7 @@
 <div class="modal fade" id="modalDeleteArticle{{this.id_article}}" tabindex="-1"
     aria-labelledby="modalDeleteArticle{{this.id_article}}" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <form action="/admin/{{this.id_article}}?_method=DELETE" method="post" class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalDeleteArticle{{this.id_article}}">Confirmer</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -103,9 +102,9 @@
                 <p>Vous confirmez la suppression de cet article ?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Oui</button>
+                <button type="submit" class="btn btn-danger">Oui</button>
                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>

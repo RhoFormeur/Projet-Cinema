@@ -1,7 +1,8 @@
 {{!-- Card Stats a faire --}}
 
-<div class="container-fluid row mb-4">
-    <svg width="804" height="550" viewBox="0 0 804 550" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="container-fluid mb-4 w-100">
+    <canvas id="dashboard"></canvas>
+    {{!-- <svg width="804" height="550" viewBox="0 0 804 550" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="4.5" y="4.5" width="541" height="541" rx="24.5" fill="white" fill-opacity="0.28" stroke="#FFC700"
             stroke-width="9" />
         <path
@@ -32,17 +33,15 @@
         <path
             d="M721.692 119H719.845L725.186 104.455H727.004L732.345 119H730.499L726.152 106.756H726.039L721.692 119ZM722.374 113.318H729.817V114.881H722.374V113.318ZM738.816 119.227C737.793 119.227 736.912 118.986 736.173 118.503C735.435 118.02 734.867 117.355 734.469 116.507C734.071 115.66 733.872 114.691 733.872 113.602C733.872 112.494 734.076 111.517 734.483 110.669C734.895 109.817 735.468 109.152 736.202 108.673C736.941 108.19 737.802 107.949 738.787 107.949C739.554 107.949 740.245 108.091 740.861 108.375C741.477 108.659 741.981 109.057 742.374 109.568C742.767 110.08 743.011 110.676 743.105 111.358H741.429C741.301 110.861 741.017 110.42 740.577 110.037C740.141 109.649 739.554 109.455 738.816 109.455C738.162 109.455 737.589 109.625 737.097 109.966C736.609 110.302 736.228 110.778 735.953 111.393C735.683 112.004 735.548 112.722 735.548 113.545C735.548 114.388 735.681 115.122 735.946 115.747C736.216 116.372 736.595 116.857 737.083 117.203C737.575 117.549 738.153 117.722 738.816 117.722C739.251 117.722 739.646 117.646 740.002 117.494C740.357 117.343 740.657 117.125 740.904 116.841C741.15 116.557 741.325 116.216 741.429 115.818H743.105C743.011 116.462 742.776 117.042 742.402 117.558C742.033 118.07 741.543 118.477 740.932 118.78C740.326 119.078 739.62 119.227 738.816 119.227ZM750.3 108.091V109.511H744.646V108.091H750.3ZM746.294 105.477H747.97V115.875C747.97 116.348 748.039 116.704 748.176 116.94C748.318 117.172 748.498 117.329 748.716 117.409C748.939 117.485 749.173 117.523 749.419 117.523C749.604 117.523 749.755 117.513 749.874 117.494C749.992 117.471 750.087 117.452 750.158 117.438L750.499 118.943C750.385 118.986 750.227 119.028 750.023 119.071C749.819 119.118 749.561 119.142 749.249 119.142C748.775 119.142 748.311 119.04 747.857 118.837C747.407 118.633 747.033 118.323 746.735 117.906C746.441 117.49 746.294 116.964 746.294 116.33V105.477ZM752.821 119V108.091H754.497V119H752.821ZM753.673 106.273C753.347 106.273 753.065 106.161 752.828 105.939C752.596 105.716 752.48 105.449 752.48 105.136C752.48 104.824 752.596 104.556 752.828 104.334C753.065 104.111 753.347 104 753.673 104C754 104 754.28 104.111 754.512 104.334C754.748 104.556 754.867 104.824 754.867 105.136C754.867 105.449 754.748 105.716 754.512 105.939C754.28 106.161 754 106.273 753.673 106.273ZM761.999 119.227C761.014 119.227 760.15 118.993 759.407 118.524C758.668 118.055 758.09 117.4 757.674 116.557C757.262 115.714 757.056 114.729 757.056 113.602C757.056 112.466 757.262 111.474 757.674 110.626C758.09 109.779 758.668 109.121 759.407 108.652C760.15 108.183 761.014 107.949 761.999 107.949C762.984 107.949 763.846 108.183 764.584 108.652C765.328 109.121 765.905 109.779 766.317 110.626C766.734 111.474 766.942 112.466 766.942 113.602C766.942 114.729 766.734 115.714 766.317 116.557C765.905 117.4 765.328 118.055 764.584 118.524C763.846 118.993 762.984 119.227 761.999 119.227ZM761.999 117.722C762.747 117.722 763.363 117.53 763.846 117.146C764.329 116.763 764.686 116.259 764.918 115.634C765.15 115.009 765.266 114.331 765.266 113.602C765.266 112.873 765.15 112.194 764.918 111.564C764.686 110.934 764.329 110.425 763.846 110.037C763.363 109.649 762.747 109.455 761.999 109.455C761.251 109.455 760.635 109.649 760.153 110.037C759.67 110.425 759.312 110.934 759.08 111.564C758.848 112.194 758.732 112.873 758.732 113.602C758.732 114.331 758.848 115.009 759.08 115.634C759.312 116.259 759.67 116.763 760.153 117.146C760.635 117.53 761.251 117.722 761.999 117.722ZM771.177 112.438V119H769.501V108.091H771.12V109.795H771.262C771.518 109.241 771.906 108.796 772.427 108.46C772.948 108.119 773.62 107.949 774.444 107.949C775.183 107.949 775.829 108.1 776.383 108.403C776.937 108.702 777.368 109.156 777.676 109.767C777.983 110.373 778.137 111.14 778.137 112.068V119H776.461V112.182C776.461 111.325 776.239 110.657 775.794 110.179C775.348 109.696 774.738 109.455 773.961 109.455C773.426 109.455 772.948 109.571 772.526 109.803C772.11 110.035 771.781 110.373 771.539 110.818C771.298 111.263 771.177 111.803 771.177 112.438Z"
             fill="white" />
-    </svg>
+    </svg> --}}
 </div>
-
 {{!-- Listes --}}
 {{!-- Films --}}
 <table class="table table-light">
     <h2 class="bg-light">Films</h2>
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col" colspan="3">Noms</th>
+            <th scope="col" colspan="3" class="col-10">Noms</th>
             <th class="text-center" scope="col"><i class="col-1 m-0 p-0 text-center bi bi-hand-thumbs-up"></i>
             </th>
             <th class="text-center" scope="col"><i class="col-1 m-0 p-0 text-center bi bi-hand-thumbs-down"></i>
@@ -50,24 +49,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
+        {{#each films}}
+        {{> global/article_profil data=this}}
+        {{/each}}
     </tbody>
 </table>
 
@@ -76,8 +60,7 @@
     <h2 class="bg-light">Séries</h2>
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col" colspan="3">Noms</th>
+            <th scope="col" colspan="3" class="col-10">Noms</th>
             <th class="text-center" scope="col"><i class="col-1 m-0 p-0 text-center bi bi-hand-thumbs-up"></i>
             </th>
             <th class="text-center" scope="col"><i class="col-1 m-0 p-0 text-center bi bi-hand-thumbs-down"></i>
@@ -85,24 +68,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
+        {{#each series}}
+        {{> global/article_profil data=this}}
+        {{/each}}
     </tbody>
 </table>
 
@@ -111,8 +79,7 @@
     <h2 class="bg-light">Animes</h2>
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col" colspan="3">Noms</th>
+            <th scope="col" colspan="3" class="col-10">Noms</th>
             <th class="text-center" scope="col"><i class="col-1 m-0 p-0 text-center bi bi-hand-thumbs-up"></i>
             </th>
             <th class="text-center" scope="col"><i class="col-1 m-0 p-0 text-center bi bi-hand-thumbs-down"></i>
@@ -120,23 +87,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="3">Star Wars : Épisode 3 - La Revanche des Sith</td>
-            <td class="text-center">X</td>
-            <td class="text-center">-</td>
-        </tr>
+        {{#each animes}}
+        {{> global/article_profil data=this}}
+        {{/each}}
     </tbody>
 </table>

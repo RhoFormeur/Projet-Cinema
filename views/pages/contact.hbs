@@ -6,7 +6,7 @@
         adipisci
         magnam ipsum totam mollitia velit reiciendis tempora nobis reprehenderit hic facere ex at.</p>
     <img class="border border-3 border-warning rounded-2 col-md-5 col-10"
-        src="https://wallpaperaccess.com/full/3382491.jpg" alt="vhs">
+        src="/assets/img/VHS.jpg" alt="vhs">
 </header>
 
 {{!-- Formulaire contact --}}
@@ -17,26 +17,26 @@
             provident, quibusdam ullam deserunt quos obcaecati incidunt praesentium sunt totam sed recusandae omnis
             dicta harum cum sint nemo quam odio consectetur quidem tempore. Eum sint neque nemo alias dolor!</p>
     </div>
-    <form class="col-xxl-4 col-md-7 col-10 border border-3 border-warning rounded-4 p-3">
+    <form action="/contact" method="post" class="col-xxl-4 col-md-7 col-10 border border-3 border-warning rounded-4 p-3">
         <div class="row">
             <div class="col-md mb-3">
                 <label for="inputName" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="inputName">
+                <input type="text" class="form-control" id="inputName" name="name">
             </div>
 
             <div class="col-md mb-3">
                 <label for="inputEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail">
+                <input type="email" class="form-control" id="inputEmail" name="email">
             </div>
         </div>
         <div class="mb-3">
             <label for="inputSujet" class="form-label">Sujet</label>
-            <input type="password" class="form-control" id="inputSujet">
+            <input type="text" class="form-control" id="inputSujet" name="sujet">
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="inputMessage">Message</label>
-            <textarea class="form-control" id="inputMessage" rows="6"></textarea>
+            <textarea class="form-control" id="inputMessage" rows="6" name="content"></textarea>
         </div>
         <div class="row justify-content-center">
             <button type="submit" class="col-5 col-sm-3 btn btn-warning">Envoyer</button>

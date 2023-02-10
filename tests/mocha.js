@@ -79,9 +79,10 @@ describe("MOCHA // CRUD // Comments", () => {
                 (${article.id_article},'test',DATE'1993-11-03','test','/test','movie',1);`
         db.query(sql, (err, data) => {
             if (err) throw err
+            console.log('POST', typeof data, data)
             db.query(`SELECT * FROM articles WHERE id_article=${article.id_article};`, (err, data) => {
                 if (err) throw err
-                console.log('POST', typeof data, data)
+                console.log('SELECT', typeof data, data)
                 done(assert.equal(typeof data, typeof []))
             })
         })

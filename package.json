@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "mocha": "nodemon --exec 'mocha ./tests/mocha.js'",
-    "chai": "MODE=test nodemon --exec 'mocha ./tests/chai.js'"
+    "mocha": "mocha ./tests/mocha.js",
+    "chai": "mocha ./tests/chai.js"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,10 @@
   },
   "homepage": "https://github.com/RhoFormeur/Projet-Cinema#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
-    "body-parser": "^1.20.0",
+    "chart.js": "^4.2.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
@@ -38,6 +39,8 @@
     "mocha": "^10.2.0",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.20"
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.20",
+    "util": "^0.12.5"
   }
 }

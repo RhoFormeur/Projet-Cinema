@@ -16,34 +16,49 @@
         <p>Réalisateur : George Lucas</p>
         <p>Acteurs principaux : Ewan McGregor, Natalie Portman, Hayden Christensen</p>
         <p>Résumé : {{data.overview}}</p>
-        <div class="d-flex justify-content-around my-4">
+        <div class="d-flex justify-content-center my-4">
             {{#if likes}}
             {{#each likes}}
             {{#if this.is_liked}}
-            <button class="col-3 btn btn-outline-warning active" data-bs-toggle="button" aria-pressed="true"><i
-                    class="bi bi-hand-thumbs-up"></i></button>
-            <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
-                    class="bi bi-hand-thumbs-down"></i></button>
+            <form action="/article/{{this.id_article}}?_method=PUT" method="post"
+                class="container-fluid d-flex justify-content-around">
+                <input type="text" name="is_liked" id="inputIsLiked" style="display: none;" value="0">
+                <a class="col-3 btn btn-outline-warning active" role="button" aria-disabled="true"><i
+                        class="bi bi-hand-thumbs-up"></i></a>
+                <button class="col-3 btn btn-outline-warning" type="submit"><i
+                        class="bi bi-hand-thumbs-down"></i></button>
+            </form>
             {{else}}
-            <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
-                    class="bi bi-hand-thumbs-up"></i></button>
-            <button class="col-3 btn btn-outline-warning active" data-bs-toggle="button" aria-pressed="true"><i
-                    class="bi bi-hand-thumbs-down"></i></button>
+            <form action="/article/{{this.id_article}}?_method=PUT" method="post"
+                class="container-fluid d-flex justify-content-around">
+                <input type="text" name="is_liked" id="inputIsLiked" style="display: none;" value="1">
+                <button class="col-3 btn btn-outline-warning" type="submit"><i
+                        class="bi bi-hand-thumbs-up"></i></button>
+                <a class="col-3 btn btn-outline-warning active" role="button" aria-disabled="true"><i
+                        class="bi bi-hand-thumbs-down"></i></a>
+            </form>
             {{/if}}
             {{/each}}
             {{else}}
-            <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
-                    class="bi bi-hand-thumbs-up"></i></button>
-            <button class="col-3 btn btn-outline-warning" data-bs-toggle="button"><i
-                    class="bi bi-hand-thumbs-down"></i></button>
+            <div class="container-fluid d-flex justify-content-around">
+                <form action="/article/{{id}}" method="post" class="col-3">
+                    <input type="text" name="is_liked" id="inputIsLiked" style="display: none;" value="1">
+                    <button class="col-12 btn btn-outline-warning" type="submit"><i
+                            class="bi bi-hand-thumbs-up"></i></button>
+                </form>
+                <form action="/article/{{id}}" method="post" class="col-3">
+                    <input type="text" name="is_liked" id="inputIsLiked" style="display: none;" value="0">
+                    <button class="col-12 btn btn-outline-warning" type="submit"><i
+                            class="bi bi-hand-thumbs-down"></i></button>
+                </form>
+            </div>
             {{/if}}
         </div>
-
     </div>
 </article>
 
 {{! Section Commentaire }}
-<form action="" method="post" class="container-fluid bg-light">
+<form action="/article/{{id}}" method="post" class="container-fluid bg-light">
     <div class="d-flex flex-column">
         <label for="textareaComment">Poster un commentaire</label>
         <textarea name="content" id="textareaComment" rows="3"></textarea>
