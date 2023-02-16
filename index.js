@@ -4,8 +4,10 @@ const express = require("express")
 const { engine } = require("express-handlebars")
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const
-    { mailSend } = require("./utils/nodeMailer")
+const { mailSend } = require("./utils/nodeMailer")
+const upload = require('./utils/multer')
+const path = require('path')
+const fs = require('fs')
 
 // Déstructuration des variables d'environement (process.env)
 const { DB_NAME, DB_HOST, DB_PASSWORD, DB_USER, PORT_NODE } = process.env
@@ -93,11 +95,60 @@ app.route('/')
 
 // Route Profil
 app.route('/profil')
+    // GET
     .get(async (req, res) => {
-        const films = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='movie' AND likes.id_user=1`)
-        const series = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='serie' AND likes.id_user=1`)
-        const animes = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='anime' AND likes.id_user=1`)
-        res.render("pages/profil", { films, series, animes, layout: 'layout_user' })
+        const films = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='movie' AND likes.id_user=1;`)
+        const series = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='serie' AND likes.id_user=1;`)
+        const animes = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='anime' AND likes.id_user=1;`)
+        const user = await db.query(`SELECT * FROM users WHERE id_user=1;`)
+        res.render("pages/profil", { films, series, animes, user: user[0], layout: 'layout_user' })
+    })
+    // UPDATE USER & PASS
+    .put(upload.single('image_user'),(req, res) => {
+        const { username, firstname, lastname, email, oldpassword, password, confirm } = req.body
+        if (username || firstname || lastname || email) {
+            db.query(`UPDATE users SET username="${username}", firstname="${firstname}", lastname="${lastname}", email="${email}" WHERE id_user=1;`, function (err, data) {
+                if (err) throw err
+                else res.redirect('back')
+            })
+        } else if (oldpassword && password && confirm) {
+            db.query(`SELECT * FROM users WHERE id_user=1;`, function (err, data) {
+                if (err) throw err
+                else if (data.password = oldpassword && password == confirm) {
+                    db.query(`UPDATE users SET password="${password}" WHERE id_user=1;`, function (err, data) {
+                        if (err) throw err
+                        else res.redirect('back')
+                    })
+                }
+                else res.render('pages/erreur_data')
+            })
+        } else if (req.file) {
+            
+            console.log(req.file)
+            console.log(req.file.completed)
+            db.query(`UPDATE users SET image_user="${req.file.completed}" WHERE id_user=1;`,function(err,data){
+                if (err) throw err
+                else res.redirect('back')
+            })
+            // db.query(`SELECT image_user FROM users WHERE id_user=1;`,function(err,data){
+            //     if(err) throw err
+            //     else if(data[0].image_user !== "default_icon.png"){
+            //         pathImg = path.resolve("/assets/img/" + data[0].image_user)
+            //         fs.unlink(pathImg, (err) => {
+            //             if (err) throw err;
+            //         })
+            //     }
+            // })     
+        }
+    })
+
+    // DELETE USER
+    .delete((req, res) => {
+        const { id_user } = req.body
+        db.query(`DELETE FROM users WHERE id_user=${id_user};`, function (err, data) {
+            if (err) throw err
+            else res.render('pages/home')
+        })
     })
 
 // Route Films
@@ -162,13 +213,13 @@ app.route('/article/:id')
                 res.json(data)
             })
         }
-        if (is_liked == 0 || is_liked == 1) {
+        if (is_liked) {
             db.query(`INSERT INTO likes (id_article,id_user,is_liked)VALUES(${id},1,${is_liked});`, function (err, data) {
                 if (err) throw err
                 res.redirect("back")
             })
         }
-        else {
+        else if (content) {
             db.query(`INSERT INTO comments (content,id_article,id_user) VALUES ("${content}",${id},1);`, function (err, data) {
                 if (err) throw err
                 // Redirection vers la page Article/id
@@ -180,15 +231,22 @@ app.route('/article/:id')
     // UPDATE COMMENT & LIKE
     .put((req, res) => {
         const { content, is_liked, id_comment } = req.body
+        console.log('req.body',content,is_liked,id_comment);
         const { id } = req.params
-        if (is_liked == 0 || is_liked == 1) {
+        if (is_liked) {
             db.query(`UPDATE likes SET is_liked = ${is_liked} WHERE id_article=${id} AND id_user=1;`, function (err, data) {
                 if (err) throw err
-                res.redirect("back")
+                else res.redirect("back")
             })
-        }
-        else {
+        } else if (content && id_comment) {
             db.query(`UPDATE comments SET content = "${content}" WHERE id_comment=${id_comment};`, function (err, data) {
+                if (err) throw err
+                if (process.env.MODE === 'test') res.json(data)
+                // Redirection vers la page Article/id
+                else res.redirect("back")
+            })
+        } else if (!content && id_comment){
+            db.query(`UPDATE comments SET is_reported = 1 WHERE id_comment=${id_comment};`, function (err, data) {
                 if (err) throw err
                 if (process.env.MODE === 'test') res.json(data)
                 // Redirection vers la page Article/id
@@ -247,27 +305,55 @@ app.route('/admin')
 
     // UPDATE ARTICLE
     .put((req, res) => {
-        const { title, release_date, overview } = req.body
-        const { id } = req.params
-        db.query(`UPDATE articles SET title='${title}',release_date = DATE '${release_date}',overview = '${overview}' WHERE id_article = ${id};`, function (err, data) {
-            if (err) throw err
+        const { title, overview, id_article, id_comment } = req.body
+        if (!id_comment) {
+            db.query(`UPDATE articles SET title="${title}",overview = "${overview}" WHERE id_article = ${id_article};`, function (err, data) {
+                if (err) throw err
 
-            if (process.env.MODE === 'test') res.json(data)
-            // Redirection vers la page Admin
-            else res.redirect('back')
-        })
+                if (process.env.MODE === 'test') res.json(data)
+                // Redirection vers la page Admin
+                else res.redirect('back')
+            })
+        } else if (id_comment) {
+            db.query(`UPDATE comments SET is_reported=0 WHERE id_comment = ${id_comment};`, function (err, data) {
+                if (err) throw err
+
+                if (process.env.MODE === 'test') res.json(data)
+                // Redirection vers la page Admin
+                else res.redirect('back')
+            })
+        }
     })
 
-    // DELETE ARTICLE
+    // DELETE ARTICLE & USER
     .delete((req, res) => {
-        const { id } = req.params
-        db.query(`DELETE FROM articles WHERE id_article=${id};`, function (err, data) {
-            if (err) throw err
+        const { id_article, id_user, id_comment } = req.body
+        if (id_article) {
+            db.query(`DELETE FROM articles WHERE id_article=${id_article};`, function (err, data) {
+                if (err) throw err
 
-            if (process.env.MODE === 'test') res.json(data)
-            // Redirection vers la page Admin
-            else res.redirect('back')
-        })
+                if (process.env.MODE === 'test') res.json(data)
+                // Redirection vers la page Admin
+                else res.redirect('back')
+            })
+        } else if (id_user) {
+            db.query(`DELETE FROM users WHERE id_user=${id_user};`, function (err, data) {
+                if (err) throw err
+
+                if (process.env.MODE === 'test') res.json(data)
+                // Redirection vers la page Admin
+                else res.redirect('back')
+            })
+        } else if (id_comment) {
+            db.query(`DELETE FROM comments WHERE id_comment=${id_comment};`, function (err, data) {
+                if (err) throw err
+
+                if (process.env.MODE === 'test') res.json(data)
+                // Redirection vers la page Admin
+                else res.redirect('back')
+            })
+        }
+
     })
 
 // Route 404

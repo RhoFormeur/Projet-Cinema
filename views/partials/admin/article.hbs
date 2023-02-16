@@ -3,24 +3,24 @@
     <td>{{this.title}}</td>
     <td class="d-flex justify-content-end gap-1">
         <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
-            data-bs-target="#collapseReadArticle{{this.id_article}}" aria-expanded="false"
-            aria-controls="collapseReadArticle{{this.id_article}}">
+            data-bs-target="#ArticleR{{this.id_article}}" aria-expanded="false"
+            aria-controls="ArticleR{{this.id_article}}">
             <i class="fa-regular fa-eye"></i></button>
 
         <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
-            data-bs-target="#collapseUpdateArticle{{this.id_article}}" aria-expanded="false"
-            aria-controls="collapseUpdateArticle{{this.id_article}}">
+            data-bs-target="#ArticleU{{this.id_article}}" aria-expanded="false"
+            aria-controls="ArticleU{{this.id_article}}">
             <i class="fa-regular fa-pen-to-square"></i></button>
 
         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-            data-bs-target="#modalDeleteArticle{{this.id_article}}">
+            data-bs-target="#ArticleD{{this.id_article}}">
             <i class="fa-regular fa-trash-can"></i></button>
     </td>
 </tr>
 
 {{!-- Collapse Read --}}
 <tr class="table-warning">
-    <td colspan="2" class="collapse" id="collapseReadArticle{{this.id_article}}">
+    <td colspan="2" class="collapse" id="ArticleR{{this.id_article}}">
         <div class="card card-body">
             <article class="row row-cols-1 row-cols-lg-2 m-0">
                 <img class="col p-2" src="https://image.tmdb.org/t/p/original{{this.poster_path}}" alt="Affiche" />
@@ -41,44 +41,54 @@
 
 {{!-- Collapse Update --}}
 <tr class="table-warning">
-    <td colspan="2" class="collapse" id="collapseUpdateArticle{{this.id_article}}">
+    <td colspan="2" class="collapse" id="ArticleU{{this.id_article}}">
         <div class="card card-body">
             <article class="row row-cols-1 row-cols-lg-2 m-0">
                 <img class="col p-2" src="https://image.tmdb.org/t/p/original{{this.poster_path}}" alt="Affiche" />
-                <form action="/admin/{{this.id_article}}?_method=PUT" method="post" class="col m-0 p-2">
+                <form action="/admin?_method=PUT" method="post" class="col m-0 p-2">
                     <div class="d-flex flex-column">
-                        <label for="inputTitle">Titre</label>
-                        <input type="text" name="title" id="inputTitle" value="{{this.title}}">
+                        <label class="form-label" for="inputIdArticle">Id</label>
+                        <input class="form-control" type="text" name="id_article" id="inputIdArticle"
+                            value="{{this.id_article}}" readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label for="inputReleaseDate">Date de Sortie</label>
-                        <input type="text" name="release_date" id="inputReleaseDate"
-                            value="{{formatDate this.release_date 'DD/MM/YYYY'}}">
+                        <label class="form-label" for="inputTitle">Titre</label>
+                        <input class="form-control" type="text" name="title" id="inputTitle" value="{{this.title}}">
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label for="inputDuration">Durée</label>
-                        <input type="text" name="duration" id="inputDuration" value="2h 20min">
+                        <label class="form-label" for="inputReleaseDate">Date de Sortie</label>
+                        <input class="form-control" type="text" name="release_date" id="inputReleaseDate"
+                            value="{{formatDate this.release_date 'DD-MM-YYYY'}}" readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label for="inputRate">Certificat</label>
-                        <input type="text" name="rate" id="inputRate" value="Tous publics">
+                        <label class="form-label" for="inputDuration">Durée</label>
+                        <input class="form-control" type="text" name="duration" id="inputDuration" value="2h 20min"
+                            readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label for="inputGenre">Genres</label>
-                        <input type="text" name="genre" id="inputGenre" value="Action - Aventure - Fantastique">
+                        <label class="form-label" for="inputRate">Certificat</label>
+                        <input class="form-control" type="text" name="rate" id="inputRate" value="Tous publics"
+                            readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label for="inputDirector">Réalisateur</label>
-                        <input type="text" name="director" id="inputDirector" value="George Lucas">
+                        <label class="form-label" for="inputGenre">Genres</label>
+                        <input class="form-control" type="text" name="genre" id="inputGenre"
+                            value="Action - Aventure - Fantastique" readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label for="inputActor">Acteurs</label>
-                        <input type="text" name="actor" id="inputActor"
-                            value="Ewan McGregor, Natalie Portman, Hayden Christensen">
+                        <label class="form-label" for="inputDirector">Réalisateur</label>
+                        <input class="form-control" type="text" name="director" id="inputDirector" value="George Lucas"
+                            readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label for="inputOverview">Résumé</label>
-                        <textarea name="overview" id="inputoverview" cols="30" rows="10">{{this.overview}}</textarea>
+                        <label class="form-label" for="inputActor">Acteurs</label>
+                        <input class="form-control" type="text" name="actor" id="inputActor"
+                            value="Ewan McGregor, Natalie Portman, Hayden Christensen" readonly>
+                    </div>
+                    <div class="d-flex flex-column mt-2">
+                        <label class="form-label" for="inputOverview">Résumé</label>
+                        <textarea class="form-control" name="overview" id="inputoverview" cols="30"
+                            rows="10">{{this.overview}}</textarea>
                     </div>
                     <div class="d-flex justify-content-end mt-4">
                         <button type="submit" class="btn btn-warning">Update</button>
@@ -90,21 +100,25 @@
 </tr>
 
 {{!-- Modal Delete Article --}}
-<div class="modal fade" id="modalDeleteArticle{{this.id_article}}" tabindex="-1"
-    aria-labelledby="modalDeleteArticle{{this.id_article}}" aria-hidden="true">
+<div class="modal fade" id="ArticleD{{this.id_article}}" tabindex="-1"
+    aria-labelledby="ArticleD{{this.id_article}}" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="/admin/{{this.id_article}}?_method=DELETE" method="post" class="modal-content">
+        <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modalDeleteArticle{{this.id_article}}">Confirmer</h1>
+                <h1 class="modal-title fs-5" id="ArticleD{{this.id_article}}">Confirmer</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>Vous confirmez la suppression de cet article ?</p>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger">Oui</button>
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
+                <form action="/admin?_method=DELETE" method="post">
+                    <input type="text" name="id_article" id="inputIdArticle" value="{{this.id_article}}"
+                        style="display: none;">
+                    <button type="submit" class="btn btn-danger">Oui</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>

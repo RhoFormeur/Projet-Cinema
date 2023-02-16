@@ -10,11 +10,11 @@ USE `screen_maze_db`;
 -- Création de toutes les tables
 CREATE TABLE users(
    id_user INT AUTO_INCREMENT NOT NULL,
-   firstname VARCHAR(45) NOT NULL,
-   lastname VARCHAR(45) NOT NULL,
+   firstname VARCHAR(45),
+   lastname VARCHAR(45),
    email VARCHAR(45) NOT NULL,
    password VARCHAR(45) NOT NULL,
-   image_user VARCHAR(100),
+   image_user VARCHAR(100) DEFAULT "default_icon.png",
    username VARCHAR(45) NOT NULL,
    is_admin TINYINT NOT NULL DEFAULT 0,
    is_ban TINYINT NOT NULL DEFAULT 0,

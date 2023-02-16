@@ -7,11 +7,6 @@
             aria-controls="collapseReadUser{{this.id_user}}">
             <i class="fa-regular fa-eye"></i></button>
 
-        <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
-            data-bs-target="#collapseUpdateUser{{this.id_user}}" aria-expanded="false"
-            aria-controls="collapseUpdateUser{{this.id_user}}">
-            <i class="fa-regular fa-pen-to-square"></i></button>
-
         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
             data-bs-target="#modalDeleteUser{{this.id_user}}">
             <i class="fa-regular fa-trash-can"></i></button>
@@ -25,40 +20,8 @@
             <p>Identifiant : {{this.username}}</p>
             <p>Prénom : {{this.firstname}}</p>
             <p>Nom : {{this.lastname}}</p>
-            <p>Mot de passe : {{this.password}}</p>
             <p>Adresse mail : {{this.email}}</p>
         </div>
-    </td>
-</tr>
-
-{{!-- Collapse Update --}}
-<tr class="table-warning">
-    <td colspan="2" class="collapse" id="collapseUpdateUser{{this.id_user}}">
-        <form class="card card-body">
-            <div class="d-flex flex-column">
-                <label for="inputTitle">Identifiant</label>
-                <input type="text" name="title" id="inputTitle" value="{{this.username}}">
-            </div>
-            <div class="d-flex flex-column mt-2">
-                <label for="inputTitle">Prénom</label>
-                <input type="text" name="title" id="inputTitle" value="{{this.firstname}}">
-            </div>
-            <div class="d-flex flex-column mt-2">
-                <label for="inputTitle">Nom</label>
-                <input type="text" name="title" id="inputTitle" value="{{this.lastname}}">
-            </div>
-            <div class="d-flex flex-column mt-2">
-                <label for="inputTitle">Mot de passe</label>
-                <input type="password" name="title" id="inputTitle" value="{{this.password}}">
-            </div>
-            <div class="d-flex flex-column mt-2">
-                <label for="inputTitle">Email</label>
-                <input type="text" name="title" id="inputTitle" value="{{this.email}}">
-            </div>
-            <div class="d-flex justify-content-end mt-4">
-                <button type="submit" class="btn btn-warning">Update</button>
-            </div>
-        </form>
     </td>
 </tr>
 
@@ -74,10 +37,11 @@
             <div class="modal-body">
                 <p>Vous confirmez la suppression de cet utilisateur ?</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Oui</button>
+            <form action="/admin?_method=DELETE" method="post" class="modal-footer">
+                <input type="text" name="id_user" id="inputIdUser" value="{{this.id_user}}" style="display: none;">
+                <button type="submit" class="btn btn-danger">Oui</button>
                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
