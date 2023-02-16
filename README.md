@@ -26,7 +26,7 @@
 **Start app**
 - Start app with Nodemon `npm run dev`
 
-- Run test on Windows 11 with MODE=test in .env
+**Run test on Windows 11 with MODE=test in .env**
 - Start Mocha test `nodemon --exec "mocha tests/index.js"`
 - Start Chai test `nodemon --exec "mocha tests/chai.js"`
 
@@ -36,14 +36,11 @@
 - [Draw.io](https://app.diagrams.net/)
 - [Figma](https://www.figma.com/fr/)
 
-**MCD/MLC**
+**MCD/MLD**
 - [Looping](https://www.looping-mcd.fr/)
 
-**MYSQL**
+**MySQL**
 - [Workbench](https://www.mysql.com/products/workbench/)
-
-**Not yet utilised** 
-- [Postman](https://www.postman.com/)*
 
 ## **DOC**
 [W3school](https://www.w3schools.com/)
