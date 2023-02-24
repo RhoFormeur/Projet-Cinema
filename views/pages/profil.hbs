@@ -32,10 +32,10 @@
                         <h1 class="modal-title fs-5" id="modalAvatar">Changer votre image de profil</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="/profil?_method=PUT" method="post" class="modal-body" enctype="multipart/form-data">
+                    <form action="/profil/{{user.id_user}}?_method=PUT" method="post" class="modal-body" enctype="multipart/form-data">
                         <div class="modal-body">
                             <p>Choisissez une image avec un ratio 1:1</p>
-                            <input class="form-control" type="file" name="image_user" id="inputImage">
+                            <input class="form-control" type="file" name="image_user" id="addImage">
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-warning">Update</button>
@@ -52,31 +52,31 @@
                         <h1 class="modal-title fs-5" id="modalUpdateUser">Modifier vos informations personnelles</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="/profil?_method=PUT" method="post">
+                    <form action="/profil/{{user.id_user}}?_method=PUT" method="post">
                         <div class="modal-body">
                             <div class="d-flex flex-column">
-                                <label class="form-label" for="inputUsername">Identifiant</label>
-                                <input class="form-control" type="text" name="username" id="inputUsername"
+                                <label class="form-label" for="upUsername">Identifiant</label>
+                                <input class="form-control" type="text" name="username" id="upUsername"
                                     value="{{user.username}}">
                             </div>
                             <div class="d-flex flex-column mt-2">
-                                <label class="form-label" for="inputFirstname">Prénom</label>
-                                <input class="form-control" type="text" name="firstname" id="inputFirstname"
+                                <label class="form-label" for="upFirstname">Prénom</label>
+                                <input class="form-control" type="text" name="firstname" id="upFirstname"
                                     value="{{user.firstname}}">
                             </div>
                             <div class="d-flex flex-column mt-2">
-                                <label class="form-label" for="inputLastname">Nom</label>
-                                <input class="form-control" type="text" name="lastname" id="inputLastname"
+                                <label class="form-label" for="upLastname">Nom</label>
+                                <input class="form-control" type="text" name="lastname" id="upLastname"
                                     value="{{user.lastname}}">
                             </div>
                             <div class="d-flex flex-column mt-2">
-                                <label class="form-label" for="inputEmail">Email</label>
-                                <input class="form-control" type="text" name="email" id="inputEmail"
+                                <label class="form-label" for="upEmail">Email</label>
+                                <input class="form-control" type="text" name="email" id="upEmail"
                                     value="{{user.email}}">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-warning">Update</button>
+                            <button type="submit" class="btn btn-warning">Mettre à jour</button>
                         </div>
                     </form>
                 </div>
@@ -90,23 +90,23 @@
                         <h1 class="modal-title fs-5" id="modalUpdatePass">Modifier votre mot de passe</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="/profil?_method=PUT" method="post" class="modal-body">
+                    <form action="/profil/{{user.id_user}}?_method=PUT" method="post">
                         <div class="modal-body">
                             <div class="d-flex flex-column">
-                                <label class="form-label" for="inputOldPass">Ancien mot de passe</label>
-                                <input class="form-control" type="password" name="oldpassword" id="inputOldPass">
+                                <label class="form-label" for="upOldPass">Ancien mot de passe</label>
+                                <input class="form-control" type="password" name="oldpassword" id="upOldPass">
                             </div>
                             <div class="d-flex flex-column mt-2">
-                                <label class="form-label" for="inputPass">Nouveau mot de passe</label>
-                                <input class="form-control" type="password" name="password" id="inputPass">
+                                <label class="form-label" for="upPass">Nouveau mot de passe</label>
+                                <input class="form-control" type="password" name="password" id="upPass">
                             </div>
                             <div class="d-flex flex-column mt-2">
-                                <label class="form-label" for="inputConfirm">Confirmer</label>
-                                <input class="form-control" type="password" name="confirm" id="inputConfirm">
+                                <label class="form-label" for="upConfirm">Confirmer</label>
+                                <input class="form-control" type="password" name="confirm" id="upConfirm">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-warning">Update</button>
+                            <button type="submit" class="btn btn-warning">Mettre à jour</button>
                         </div>
                     </form>
                 </div>
@@ -124,10 +124,8 @@
                     <div class="modal-body">
                         <p>Vous confirmez vouloir supprimer votre compte ?</p>
                     </div>
-                    <form action="/profil?_method=DELETE" method="post">
+                    <form action="/profil/{{user.id_user}}?_method=DELETE" method="post">
                         <div class="modal-footer">
-                            <input type="text" name="id_user" id="inputIdUser" value="{{user.id_user}}"
-                                style="display: none;">
                             <button type="submit" class="btn btn-danger">Oui</button>
                             <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
                         </div>

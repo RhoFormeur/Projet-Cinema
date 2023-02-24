@@ -9,9 +9,9 @@ const storage = multer.diskStorage({
     },
     // Ici est définit le format du nom de l'image à stocker
     filename: (req, file, cb) => {
-        const ext = file.originalname.slice(-3),
-
-        completed = Date.now() + '.' + ext;        
+        const splited = file.originalname.split('.')
+        const ext = splited[splited.length-1]
+        completed = Date.now() + '.' + ext     
         
         file.completed = completed
 

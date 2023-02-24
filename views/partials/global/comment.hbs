@@ -22,15 +22,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="CommentU{{this.id_comment}}">Confirmer</h1>
+                <h1 class="modal-title fs-5" id="CommentU{{this.id_comment}}">Éditer</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/article/{{this.id_article}}?_method=PUT" method="post">
+            <form action="/comment/{{this.id_comment}}?_method=PUT" method="post">
                 <div class="modal-body">
-                    <input type="number" id="inputIdComment" name="id_comment" value="{{this.id_comment}}"
-                        style="display: none;">
-                    <label class="form-label" for="inputUpdateComment">Commentaire</label>
-                    <textarea class="form-control" name="content" id="inputUpdateComment"
+                    <label class="form-label" for="upComment">Commentaire</label>
+                    <textarea class="form-control" name="content" id="upComment"
                         rows="3">{{this.content}}</textarea>
                 </div>
                 <div class="modal-footer">
@@ -48,16 +46,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="CommentD{{this.id_comment}}">Confirmer</h1>
+                <h1 class="modal-title fs-5" id="CommentD{{this.id_comment}}">Supprimer</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>Vous confirmez la suppression de ce commentaire ?</p>
             </div>
             <div class="modal-footer">
-                <form action="/article/{{this.id_article}}?_method=DELETE" method="post">
-                    <input type="number" name="id_comment" id="inputIdComment" value="{{id_comment}}"
-                        style="display: none;">
+                <form action="/comment/{{this.id_comment}}?_method=DELETE" method="post">
                     <button type="submit" class="btn btn-danger">Oui</button>
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
                 </form>
@@ -72,16 +68,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="CommentR{{this.id_comment}}">Confirmer</h1>
+                <h1 class="modal-title fs-5" id="CommentR{{this.id_comment}}">Signaler</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>Vous confirmez le signalement de ce commentaire ?</p>
             </div>
             <div class="modal-footer">
-                <form action="/article/{{this.id_article}}?_method=PUT" method="post">
-                    <input type="number" id="inputIdComment" name="id_comment" value="{{this.id_comment}}"
-                        style="display: none;">
+                <form action="/report/{{this.id_comment}}?_method=PUT" method="post">
                     <button type="submit" class="btn btn-danger">Oui</button>
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
                 </form>

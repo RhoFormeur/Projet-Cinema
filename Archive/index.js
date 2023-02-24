@@ -1,13 +1,14 @@
-require("dotenv").config({ path: "./vars/.env" });
+require("dotenv").config({ path: "./vars/.env" })
 const mysql = require("mysql")
 const express = require("express")
 const { engine } = require("express-handlebars")
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const { mailSend } = require("./utils/nodeMailer")
-const upload = require('./utils/multer')
+const { mailSend } = require("./back/config/other/nodeMailer")
+const upload = require('./back/config/other/multer')
 const path = require('path')
 const fs = require('fs')
+const bcrypt = require('bcrypt')
 
 // Déstructuration des variables d'environement (process.env)
 const { DB_NAME, DB_HOST, DB_PASSWORD, DB_USER, PORT_NODE } = process.env
@@ -18,7 +19,7 @@ const app = express()
  ***************************/
 
 // ! Import des helpers
-const { limitArr, toUpper, formatDate, formatCommentDate } = require("./helper")
+const { limitArr, toUpper, formatDate, formatCommentDate } = require("./back/helper")
 
 app.engine("hbs", engine({
     // ! initialisation des helpers dans notre handlebars
@@ -92,6 +93,48 @@ app.route('/')
     .get((req, res) => {
         res.render("pages/home")
     })
+    .post(async (req, res) => {
+        const { username, password, email, confirm } = req.body
+        const salt = 10
+        if (username && email && password == confirm) {
+            bcrypt.hash(password, salt, function (err, hash) {
+                // Store hash in your password DB.
+                db.query(`INSERT INTO users (username,password,email) VALUES ('${username}','${hash}','${email}');`, function (err, data) {
+                    if (err) throw err
+                    else {
+                        mailSend(`ScreenMaze <${process.env.MAIL_USER}>`, `${data.username} <${email}>`, `Confirmer votre email`, `Cliquez sur le lien ci-dessous pour confirmer votre email`, async function (err, info) {
+                            if (err) throw err
+                            console.log(info);
+                            res.render("pages/mail_confirm")
+                        })
+                    }
+                })
+            })
+        } else if (username && password && !email && !confirm) {
+            db.query(`SELECT * FROM users WHERE username='${username}';`, function (err, data) {
+                console.log(data);
+                if (err) throw err
+                else if (!data) res.render('pages/no_account')
+                else {
+                    bcrypt.compare(password, data[0].password, function (err, result) {
+                        if (result == true) res.render('pages/profil')
+                        else if (result == false) res.render('pages/404')
+                    })
+                }
+            })
+        } else if (email && !username && !password && !confirm) {
+            db.query(`SELECT * FROM users WHERE email='${email}';`, function (err, data) {
+                if (err) throw err
+                else if (!data) res.render('pages/no_account')
+                else {
+                    mailSend(`ScreenMaze <${process.env.MAIL_USER}>`, `${data.username} <${email}>`, `Modifier votre mot de passe`, `Cliquez sur le lien ci-dessous pour modifier votre mot de passe`, async function (err, info) {
+                        if (err) throw err
+                        else res.render('pages/mail_recup')
+                    })
+                }
+            })
+        } else res.render('pages/404')
+    })
 
 // Route Profil
 app.route('/profil')
@@ -104,7 +147,7 @@ app.route('/profil')
         res.render("pages/profil", { films, series, animes, user: user[0], layout: 'layout_user' })
     })
     // UPDATE USER & PASS
-    .put(upload.single('image_user'),(req, res) => {
+    .put(upload.single('image_user'), (req, res) => {
         const { username, firstname, lastname, email, oldpassword, password, confirm } = req.body
         if (username || firstname || lastname || email) {
             db.query(`UPDATE users SET username="${username}", firstname="${firstname}", lastname="${lastname}", email="${email}" WHERE id_user=1;`, function (err, data) {
@@ -120,25 +163,21 @@ app.route('/profil')
                         else res.redirect('back')
                     })
                 }
-                else res.render('pages/erreur_data')
             })
         } else if (req.file) {
-            
-            console.log(req.file)
-            console.log(req.file.completed)
-            db.query(`UPDATE users SET image_user="${req.file.completed}" WHERE id_user=1;`,function(err,data){
+            db.query(`SELECT image_user FROM users WHERE id_user=1;`, function (err, data) {
                 if (err) throw err
-                else res.redirect('back')
+                else if (data[0].image_user !== "default_icon.png") {
+                    pathImg = path.resolve("public/img/" + data[0].image_user)
+                    fs.unlink(pathImg, (err) => {
+                        if (err) throw err;
+                    })
+                }
+                db.query(`UPDATE users SET image_user="${req.file.completed}" WHERE id_user=1;`, function (err, data) {
+                    if (err) throw err
+                    else res.redirect('back')
+                })
             })
-            // db.query(`SELECT image_user FROM users WHERE id_user=1;`,function(err,data){
-            //     if(err) throw err
-            //     else if(data[0].image_user !== "default_icon.png"){
-            //         pathImg = path.resolve("/assets/img/" + data[0].image_user)
-            //         fs.unlink(pathImg, (err) => {
-            //             if (err) throw err;
-            //         })
-            //     }
-            // })     
         }
     })
 
@@ -231,7 +270,7 @@ app.route('/article/:id')
     // UPDATE COMMENT & LIKE
     .put((req, res) => {
         const { content, is_liked, id_comment } = req.body
-        console.log('req.body',content,is_liked,id_comment);
+        console.log('req.body', content, is_liked, id_comment);
         const { id } = req.params
         if (is_liked) {
             db.query(`UPDATE likes SET is_liked = ${is_liked} WHERE id_article=${id} AND id_user=1;`, function (err, data) {
@@ -245,7 +284,7 @@ app.route('/article/:id')
                 // Redirection vers la page Article/id
                 else res.redirect("back")
             })
-        } else if (!content && id_comment){
+        } else if (!content && id_comment) {
             db.query(`UPDATE comments SET is_reported = 1 WHERE id_comment=${id_comment};`, function (err, data) {
                 if (err) throw err
                 if (process.env.MODE === 'test') res.json(data)
@@ -277,8 +316,8 @@ app.route('/contact')
             if (err) throw err
             console.log(info);
             res.redirect('/')
-        });
-    });
+        })
+    })
 
 // Route Admin
 app.route('/admin')

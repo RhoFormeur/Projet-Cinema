@@ -1,0 +1,11 @@
+{{!-- Formulaire verify --}}
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center text-white mb-4">
+    <form action="/verify/{{data.id_user}}?_method=PUT" method="post"
+        class="col-xxl-4 col-md-7 col-10 border border-3 border-warning rounded-4 p-3">
+        <div class="row">
+            <p>Confirmer votre adresse mail et finir votre inscription.</p>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-warning">Verifier</button>
+            </div>
+    </form>
+</div>

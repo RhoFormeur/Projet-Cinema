@@ -27,11 +27,11 @@
                 <div class="col m-0 p-2">
                     <h4>Titre : {{this.title}}</h4>
                     <p>Sortie : {{formatDate this.release_date 'DD/MM/YYYY'}}</p>
-                    <p>Durée : 2h 20min</p>
-                    <p>Certificat : Tous publics</p>
-                    <p>Genre : Action - Aventure - Fantastique</p>
-                    <p>Réalisateur : George Lucas</p>
-                    <p>Acteurs principaux : Ewan McGregor, Natalie Portman, Hayden Christensen</p>
+                    <p>Durée : ...</p>
+                    <p>Certificat : ...</p>
+                    <p>Genre : ...</p>
+                    <p>Réalisateur : ...</p>
+                    <p>Acteurs principaux : ...</p>
                     <p>Résumé : {{this.overview}}</p>
                 </div>
             </article>
@@ -47,47 +47,47 @@
                 <img class="col p-2" src="https://image.tmdb.org/t/p/original{{this.poster_path}}" alt="Affiche" />
                 <form action="/admin?_method=PUT" method="post" class="col m-0 p-2">
                     <div class="d-flex flex-column">
-                        <label class="form-label" for="inputIdArticle">Id</label>
-                        <input class="form-control" type="text" name="id_article" id="inputIdArticle"
+                        <label class="form-label" for="upIdArticle">Id</label>
+                        <input class="form-control" type="text" name="id_article" id="upIdArticle"
                             value="{{this.id_article}}" readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputTitle">Titre</label>
-                        <input class="form-control" type="text" name="title" id="inputTitle" value="{{this.title}}">
+                        <label class="form-label" for="upTitle">Titre</label>
+                        <input class="form-control" type="text" name="title" id="upTitle" value="{{this.title}}">
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputReleaseDate">Date de Sortie</label>
-                        <input class="form-control" type="text" name="release_date" id="inputReleaseDate"
+                        <label class="form-label" for="upReleaseDate">Date de Sortie</label>
+                        <input class="form-control" type="text" name="release_date" id="upReleaseDate"
                             value="{{formatDate this.release_date 'DD-MM-YYYY'}}" readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputDuration">Durée</label>
-                        <input class="form-control" type="text" name="duration" id="inputDuration" value="2h 20min"
+                        <label class="form-label" for="upDuration">Durée</label>
+                        <input class="form-control" type="text" name="duration" id="upDuration" value="..."
                             readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputRate">Certificat</label>
-                        <input class="form-control" type="text" name="rate" id="inputRate" value="Tous publics"
+                        <label class="form-label" for="upRate">Certificat</label>
+                        <input class="form-control" type="text" name="rate" id="upRate" value="..."
                             readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputGenre">Genres</label>
-                        <input class="form-control" type="text" name="genre" id="inputGenre"
-                            value="Action - Aventure - Fantastique" readonly>
+                        <label class="form-label" for="upGenre">Genres</label>
+                        <input class="form-control" type="text" name="genre" id="upGenre"
+                            value="..." readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputDirector">Réalisateur</label>
-                        <input class="form-control" type="text" name="director" id="inputDirector" value="George Lucas"
+                        <label class="form-label" for="upDirector">Réalisateur</label>
+                        <input class="form-control" type="text" name="director" id="upDirector" value="..."
                             readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputActor">Acteurs</label>
-                        <input class="form-control" type="text" name="actor" id="inputActor"
-                            value="Ewan McGregor, Natalie Portman, Hayden Christensen" readonly>
+                        <label class="form-label" for="upActor">Acteurs</label>
+                        <input class="form-control" type="text" name="actor" id="upActor"
+                            value="..." readonly>
                     </div>
                     <div class="d-flex flex-column mt-2">
-                        <label class="form-label" for="inputOverview">Résumé</label>
-                        <textarea class="form-control" name="overview" id="inputoverview" cols="30"
+                        <label class="form-label" for="upOverview">Résumé</label>
+                        <textarea class="form-control" name="overview" id="upoverview" cols="30"
                             rows="10">{{this.overview}}</textarea>
                     </div>
                     <div class="d-flex justify-content-end mt-4">
@@ -112,9 +112,7 @@
                 <p>Vous confirmez la suppression de cet article ?</p>
             </div>
             <div class="modal-footer">
-                <form action="/admin?_method=DELETE" method="post">
-                    <input type="text" name="id_article" id="inputIdArticle" value="{{this.id_article}}"
-                        style="display: none;">
+                <form action="/admin/{{this.id_article}}?_method=DELETE" method="post">
                     <button type="submit" class="btn btn-danger">Oui</button>
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
                 </form>

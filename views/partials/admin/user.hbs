@@ -37,10 +37,11 @@
             <div class="modal-body">
                 <p>Vous confirmez la suppression de cet utilisateur ?</p>
             </div>
-            <form action="/admin?_method=DELETE" method="post" class="modal-footer">
-                <input type="text" name="id_user" id="inputIdUser" value="{{this.id_user}}" style="display: none;">
-                <button type="submit" class="btn btn-danger">Oui</button>
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
+            <form action="/profil/{{this.id_user}}?_method=DELETE" method="post">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Oui</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
+                </div>
             </form>
         </div>
     </div>
