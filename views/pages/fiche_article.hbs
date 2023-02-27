@@ -22,7 +22,6 @@
             {{#if this.is_liked}}
             <form action="/article/{{this.id_article}}?_method=PUT" method="post"
                 class="container-fluid d-flex justify-content-around">
-                <input type="text" name="is_liked" id="inputIsLiked" style="display: none;" value="0">
                 <a class="col-3 btn btn-outline-warning active" role="button" aria-disabled="true"><i
                         class="bi bi-hand-thumbs-up"></i></a>
                 <button class="col-3 btn btn-outline-warning" type="submit"><i
@@ -31,7 +30,6 @@
             {{else}}
             <form action="/article/{{this.id_article}}?_method=PUT" method="post"
                 class="container-fluid d-flex justify-content-around">
-                <input type="text" name="is_liked" id="inputIsLiked" style="display: none;" value="1">
                 <button class="col-3 btn btn-outline-warning" type="submit"><i
                         class="bi bi-hand-thumbs-up"></i></button>
                 <a class="col-3 btn btn-outline-warning active" role="button" aria-disabled="true"><i

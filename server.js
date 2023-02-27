@@ -17,7 +17,7 @@ const app = express()
  ***************************/
 
 // ! Import des helpers
-const { limitArr, toUpper, formatDate, formatCommentDate } = require("./back/helper")
+const { limitArr, toUpper, formatDate, formatCommentDate, checkComment } = require("./back/helper")
 
 app.engine("hbs", engine({
     // ! initialisation des helpers dans notre handlebars
@@ -26,6 +26,7 @@ app.engine("hbs", engine({
         toUpper,
         formatDate,
         formatCommentDate,
+        checkComment,
     },
     extname: "hbs",
     defaultLayout: "layout_main",
@@ -91,4 +92,4 @@ app.listen(PORT_NODE, () =>
     console.log(`Server start on localhost:${PORT_NODE} 🚀`)
 )
 
-module.exports = { db }
+module.exports = { db,app }

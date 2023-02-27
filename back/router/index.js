@@ -5,9 +5,10 @@ const upload = require('../config/other/multer')
 // Import des controllers
 const { page404, pageAdmin, createArticle, updateArticle, deleteArticle, releaseComment, pageFilms, pageSeries, pageAnimes, pageArticle, register, login, recover, logout, pageRecover, passRecover, verify,pageVerify, createComment, updateComment, reportComment, deleteComment, pageHome, pageContact, mailContact, pageProfil, editProfil, deleteProfil, postLike, updateLike } = require("../controller")
 // Import Middleware
-const { } = require('../middleware')
+const { isAdmin,isVerified, checkLayout } = require('../middleware')
 
 // Visiteur
+router.use(checkLayout)
 router.route('/').get(pageHome)
 router.route('/contact')
     .get(pageContact)
@@ -28,6 +29,7 @@ router.route('/recovery/:id')
     .put(passRecover)
 router.route('/logout').post(logout)
 
+router.use(isVerified)
 // User
 router.route('/profil')
     .get(pageProfil)
@@ -46,6 +48,7 @@ router.route('/comment/:id')
 router.route('/report/:id')
     .put(reportComment)
 
+router.use(isAdmin)
 // Admin
 router.route('/admin')
     .get(pageAdmin)
