@@ -38,7 +38,7 @@ exports.login = async function (req, res) {
                     is_verified: data.is_verified,
                     is_admin: data.is_admin
                 }
-                res.render('pages/home')
+                res.redirect('back')
             } else if (result == false) res.render('pages/home', { flash: "Ce n'est pas le bon mot de passe !" })
         })
     }

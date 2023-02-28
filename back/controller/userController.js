@@ -3,9 +3,9 @@ const fs = require('fs')
 const { RenderArticle } = require("../utils/render")
 
 exports.pageProfil = async function (req, res) {
-    const films = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='movie' AND likes.id_user=${req.session.user.id};`);
-    const series = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='serie' AND likes.id_user=${req.session.user.id};`);
-    const animes = await db.query(`SELECT title,is_liked FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='anime' AND likes.id_user=${req.session.user.id};`);
+    const films = await db.query(`SELECT title,is_liked,articles.id_article FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='movie' AND likes.id_user=${req.session.user.id};`);
+    const series = await db.query(`SELECT title,is_liked,articles.id_article FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='serie' AND likes.id_user=${req.session.user.id};`);
+    const animes = await db.query(`SELECT title,is_liked,articles.id_article FROM articles INNER JOIN likes ON articles.id_article=likes.id_article WHERE type ='anime' AND likes.id_user=${req.session.user.id};`);
     const [user] = await db.query(`SELECT * FROM users WHERE id_user=${req.session.user.id};`)
     res.render("pages/profil", { films, series, animes, user })
 }
