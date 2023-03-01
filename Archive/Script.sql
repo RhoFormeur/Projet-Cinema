@@ -108,7 +108,3 @@ INSERT INTO `genres`(`id_genre`,`name`) VALUES
     (10767,'Talk'),
     (10768,'War & Politics'),
     (37,'Western');
-
--- Ajout Admin
-INSERT INTO `users`(`firstname`,`lastname`,`email`,`password`,`username`,`is_admin`,`is_verified`) VALUES
-    ('Maxime','Ledus','ledusmaxime@gmail.com','@test','RhoFormeur',1,1);
