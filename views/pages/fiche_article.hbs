@@ -7,7 +7,7 @@
         <p>Durée : ...</p>
         <p>Sortie : {{formatDate data.article.release_date 'DD/MM/YYYY'}}</p>
         <p>Certificat : ...</p>
-        <div class="d-flex">
+        <div class="d-flex flex-column flex-md-row">
             <p class="me-1">Genres :</p>
             {{#each data.genres}}
             <p class="mx-1">{{this.name}}</p>

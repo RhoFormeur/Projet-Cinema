@@ -8,11 +8,11 @@
                 <th>Date du signalement</th>
             </tr>
         </thead>
-            <tbody>
-                {{#each comments}}
-                {{> admin/comment_admin data=this}}
-                {{/each}}
-            </tbody>
+        <tbody>
+            {{#each comments}}
+            {{> admin/comment_admin data=this}}
+            {{/each}}
+        </tbody>
     </table>
 </div>
 
@@ -25,11 +25,11 @@
                 <th scope="col">Username</th>
             </tr>
         </thead>
-            <tbody>
-                {{#each users}}
-                {{> admin/user data=this}}
-                {{/each}}
-            </tbody>
+        <tbody>
+            {{#each users}}
+            {{> admin/user data=this}}
+            {{/each}}
+        </tbody>
     </table>
 </div>
 
@@ -44,11 +44,11 @@
                         data-bs-toggle="modal" data-bs-target="#AddArticle">Ajouter</i></button></th>
             </tr>
         </thead>
-            <tbody>
-                {{#each articles}}
-                {{> admin/article data=this}}
-                {{/each}}
-            </tbody>
+        <tbody>
+            {{#each articles}}
+            {{> admin/article data=this}}
+            {{/each}}
+        </tbody>
     </table>
 </div>
 
@@ -68,6 +68,15 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="addType" class="form-label">Type</label>
+                        <select name="cars" id="addType" class="form-control">
+                            <option value="movie">Film</option>
+                            <option value="serie">Série</option>
+                            <option value="anime">Anime</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="addTitle" class="form-label">Titre</label>
                         <input type="text" class="form-control" id="addTitle" name="title">
                     </div>
@@ -79,11 +88,11 @@
 
                     <div class="d-flex flex-column mb-3">
                         <label for="addOverview" class="form-label">Résumé</label>
-                        <textarea id="addOverview" rows="5" name="overview"></textarea>
+                        <textarea class="form-control" id="addOverview" rows="5" name="overview"></textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label for="addPosterPath" class="form-label">Chemin image</label>
+                        <label for="addPosterPath" class="form-label">Lien image</label>
                         <input type="text" class="form-control" id="addPosterPath" name="poster_path">
                     </div>
 
