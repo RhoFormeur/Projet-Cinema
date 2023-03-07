@@ -1,4 +1,23 @@
 {{!-- 1 User --}}
+{{#if this.is_ban}}
+<tr class="table-danger">
+    <td>{{this.username}}</td>
+    <td class="d-flex justify-content-end gap-1">
+        <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
+            data-bs-target="#collapseReadUser{{this.id_user}}" aria-expanded="false"
+            aria-controls="collapseReadUser{{this.id_user}}">
+            <i class="fa-regular fa-eye"></i></button>
+
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#modalBanUser{{this.id_user}}">
+            <i class="bi bi-slash-square"></i></button>
+
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#modalDeleteUser{{this.id_user}}">
+            <i class="fa-regular fa-trash-can"></i></button>
+    </td>
+</tr>
+{{else}}
 <tr class="table-secondary">
     <td>{{this.username}}</td>
     <td class="d-flex justify-content-end gap-1">
@@ -8,11 +27,15 @@
             <i class="fa-regular fa-eye"></i></button>
 
         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#modalBanUser{{this.id_user}}">
+            <i class="bi bi-slash-square"></i></button>
+
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
             data-bs-target="#modalDeleteUser{{this.id_user}}">
             <i class="fa-regular fa-trash-can"></i></button>
     </td>
 </tr>
-
+{{/if}}
 {{!-- Collapse Read --}}
 <tr class="table-warning">
     <td colspan="2" class="collapse" id="collapseReadUser{{this.id_user}}">
@@ -24,7 +47,6 @@
         </div>
     </td>
 </tr>
-
 {{!-- Modal Delete User --}}
 <div class="modal fade" id="modalDeleteUser{{this.id_user}}" tabindex="-1"
     aria-labelledby="modalDeleteUser{{this.id_user}}" aria-hidden="true">
@@ -46,3 +68,48 @@
         </div>
     </div>
 </div>
+
+{{!-- Modal Ban User --}}
+{{#if this.is_ban}}
+<div class="modal fade" id="modalBanUser{{this.id_user}}" tabindex="-1"
+    aria-labelledby="modalBanUser{{this.id_user}}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalBanUser{{this.id_user}}">Confirmer</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Confirmez-vous que vous souhaitez autorisé cet utilisateur ?</p>
+            </div>
+            <form action="/ban/{{this.id_user}}?_method=PUT" method="post">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Oui</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="modal fade" id="modalBanUser{{this.id_user}}" tabindex="-1"
+    aria-labelledby="modalBanUser{{this.id_user}}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalBanUser{{this.id_user}}">Confirmer</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Confirmez-vous que vous souhaitez bannir cet utilisateur ?</p>
+            </div>
+            <form action="/ban/{{this.id_user}}?_method=PUT" method="post">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Oui</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Non</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{/if}}

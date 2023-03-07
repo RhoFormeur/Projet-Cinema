@@ -1,4 +1,4 @@
-const { pageAdmin, createArticle, updateArticle, deleteArticle, releaseComment } = require("./adminController");
+const { pageAdmin, createArticle, updateArticle, deleteArticle, releaseComment,banUser } = require("./adminController");
 const { pageFilms, pageSeries, pageAnimes, pageArticle } = require('./articleController');
 const { register, login, recover,logout,pageRecover,passRecover,verify,pageVerify } = require('./authController');
 const { createComment, updateComment, reportComment, deleteComment } = require('./commentController');
@@ -7,7 +7,7 @@ const { pageProfil, editProfil, deleteProfil, postLike, updateLike} = require('.
 
 module.exports = {
     // Admin
-    pageAdmin, createArticle, updateArticle, deleteArticle, releaseComment,
+    pageAdmin, createArticle, updateArticle, deleteArticle, releaseComment, banUser,
     // Article
     pageFilms, pageSeries, pageAnimes, pageArticle,
     // Auth

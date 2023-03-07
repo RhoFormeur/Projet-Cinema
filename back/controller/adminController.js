@@ -28,3 +28,16 @@ exports.releaseComment = async function (req, res) {
     await db.query(`UPDATE comments SET is_reported=0 WHERE id_comment = ${id};`);
     res.redirect('back')
 }
+exports.banUser = async function (req, res) {
+    const { id } = req.params
+    const [data] = await db.query(`SELECT * FROM users WHERE id_user=${id}`)
+    if(!data) res.render('pages/home',{flash : "l'utilisateur n'éxiste pas !"})
+    else if (data.username === 'RhoFormeur') res.render('pages/admin', { flash: 'Vous ne pouvez pas bannir le fondateur !' })
+    else if (data.is_ban === 1){
+        await db.query(`UPDATE users SET is_ban=0 WHERE id_user=${id}`);
+        res.redirect('back')
+    } else if (data.is_ban === 0){
+        await db.query(`UPDATE users SET is_ban=1 WHERE id_user=${id}`);
+        res.redirect('back')
+    }
+}
