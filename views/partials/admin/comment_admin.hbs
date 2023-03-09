@@ -37,7 +37,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Vous confirmez la suppression de ce commentaire ?</p>
+                <p>Confirmez-vous que vous souhaitez supprimé ce commentaire ?</p>
             </div>
             <form action="/comment/{{this.id_comment}}?_method=DELETE" method="post">
                 <div class="modal-footer">
@@ -59,7 +59,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Vous confirmez retirer le signalement de ce commentaire ?</p>
+                <p>Confirmez-vous que vous souhaitez retiré le signalement de ce commentaire ?</p>
             </div>
             <form action="/admin/{{this.id_comment}}?_method=PUT" method="post">
                 <div class="modal-footer">

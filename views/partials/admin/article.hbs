@@ -1,6 +1,6 @@
 {{!-- 1 Article --}}
 <tr class="table-secondary">
-    <td>{{this.title}}</td>
+    <td class="text-truncate" style="max-width: 50vw;">{{this.title}}</td>
     <td class="d-flex justify-content-end gap-1">
         <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
             data-bs-target="#ArticleR{{this.id_article}}" aria-expanded="false"
@@ -109,7 +109,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Vous confirmez la suppression de cet article ?</p>
+                <p>Confirmez-vous que vous souhaitez supprimer cet article ?</p>
             </div>
             <div class="modal-footer">
                 <form action="/admin/{{this.id_article}}?_method=DELETE" method="post">

@@ -56,7 +56,12 @@ exports.deleteProfil = async function (req, res) {
     const { id } = req.params
     await db.query(`DELETE FROM users WHERE id_user=${id};`)
     if (req.session.is_admin === 1) res.redirect('back')
-    else res.render('pages/home', { flash: "Votre compte a bien été supprimé !" })
+    else {
+        req.session.destroy(() => {
+            res.clearCookie('screenmaze-cookie')
+            res.render('pages/home', { flash: "Le compte a bien été supprimé !" })
+        })
+    }
 }
 
 exports.postLike = async function (req, res) {

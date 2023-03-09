@@ -27,6 +27,7 @@ exports.login = async function (req, res) {
     const { username, password } = req.body
     const [data] = await db.query(`SELECT * FROM users WHERE username='${username}';`);
     if (!data) res.render('pages/home', { flash: "Ce compte n'éxiste pas !" })
+    else if (data.is_ban === 1) res.render('pages/home',{flash:"Ce compte a été banni !"})
     else {
         bcrypt.compare(password, data.password, async function (err, result) {
             if (result == true) {
@@ -72,7 +73,7 @@ exports.logout = function (req, res) {
 
 exports.pageRecover = async function (req, res) {
     const { id } = req.params
-    const [data] = await db.query(`SELECT * FROM users WHERE recovery=${id}`);
+    const [data] = await db.query(`SELECT username,id_user FROM users WHERE recovery=${id}`);
     if (!data) res.render('pages/home', { flash: "Il n'y a pas de compte associé à cette session pour modifier le mot de passe !" })
     else res.render('pages/recovery', { data })
 }
