@@ -6,12 +6,17 @@
         </div>
         <p class="ms-5">{{this.content}}</p>
         <div class="d-flex">
+            {{#if session}}
             <button type="button" class="btn btn-link" data-bs-toggle="modal"
                 data-bs-target="#CommentU{{this.id_comment}}">éditer</button>
             <button type="button" class="btn btn-link" data-bs-toggle="modal"
                 data-bs-target="#CommentD{{this.id_comment}}">supprimer</button>
             <button type="button" class="btn btn-link" data-bs-toggle="modal"
                 data-bs-target="#CommentR{{this.id_comment}}">signaler</button>
+            {{else}}
+            <button type="button" class="btn btn-link" data-bs-toggle="modal"
+                data-bs-target="#CommentR{{this.id_comment}}">signaler</button>
+            {{/if}}
         </div>
     </td>
 </tr>
